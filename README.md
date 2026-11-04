@@ -3,20 +3,21 @@
 The public website of **Tadawa Healthcare L.L.C.** (تداوىٰ للرعاية الصحية), Jordan's telemedicine and primary-care company.
 Bilingual (English / Arabic with full RTL), built on the Tadawa Design System, with no framework or build dependency beyond Python 3.
 
-## Pages
+## Site map
 
-| File | Audience | What it holds |
-| --- | --- | --- |
-| `index.html` | Everyone | Hero, audience switch, numbers, care model, services, how it works, business teaser, locations, partners, doctors, social, download |
-| `patients.html` | Patients & families | Treat Me Now, remote / clinic / home visits, family medicine, care plan, My Health, accepted insurance, locations, FAQ |
-| `business.html` | Insurers, TPAs, employers, providers, projects | Problem, four levers, measured evidence (MedNet pilot, cost per visit, ER avoidance), employer plan, provider tools, Care Van, BD contact form |
-| `tafileh.html` | Tafileh patients | Hours, staff, visiting specialties, services, insurance, how to book, map, center guide PDF |
-| `app.html` | App users | Download, home-screen tour, step-by-step guide with tabs, tutorial video library |
-| `about.html` | Everyone | Story, vision & mission, thesis, platform, locations & expansion timeline, community, investors |
-| `team.html` | Employees & candidates | Shifts and roles, open positions, why join, team tools (Zoho, Asana, Drive), handbooks, IT support, onboarding |
-| `contact.html` | Everyone | Three locations, business development, general contact form (WhatsApp or email) |
-| `privacy.html` | Everyone | Plain-language privacy policy (needs legal review) |
-| `404.html` | | Not-found page |
+Forty-one pages in five sections, each reachable from a mega menu in the header and from the footer. Every section has a hub page and deep pages underneath it.
+
+| Section | Pages |
+| --- | --- |
+| `index.html` | Home: booking bar, care chooser, metrics, scroll story, services bento, audience tabs, evidence, locations, library teaser, help search |
+| `care/` | Hub · treat-me-now · remote-visit · clinic-visit · home-visit · family-medicine · chronic-care · specialists · health-record · insurance · plans |
+| `organizations/` | Hub (the Tadawa model) · insurers · employers · providers · projects · evidence |
+| `locations/` | Hub · amman · tafileh · irbid |
+| `resources/` | Hub · app-guide (with `#download`) · videos · help (searchable help center) · conditions (symptom chooser) · health-library · `library/` six reviewed articles |
+| `company/` | Hub · about · team (careers and employee resources) · investors · contact (patient and business forms) |
+| root | `privacy.html`, `404.html`, `sitemap.xml`, `robots.txt`, `site.webmanifest` |
+
+Patterns borrowed from the best telemedicine and product sites: Stripe-style mega menus, a Zocdoc-style booking bar, a Kry/Livi-style care chooser, Linear-style metrics, an Oura/Whoop-style scroll story, Teladoc/One Medical-style per-service and per-audience pages, a Notion-style help center and a medically reviewed health library.
 
 ## How it is built
 
@@ -24,8 +25,9 @@ Bilingual (English / Arabic with full RTL), built on the Tadawa Design System, w
 src/partials/head.html      <head>, SEO, hreflang, schema.org, fonts, CSS
 src/partials/header.html    sticky nav, language switch, mobile menu
 src/partials/footer.html    footer, WhatsApp float, pulse-line + icon sprite, site.js
-src/pages/*.html            one source file per page, with a small front-matter block
-tools/build.py              assembles src/ into the root *.html files
+src/pages/**/*.html         one source file per page (nested folders), with a small front-matter block
+src/partials/cta-*.html     reusable bands (download, business), insurance wall, store buttons
+tools/build.py              assembles src/ into the output *.html files; `{{base}}` resolves relative paths per folder depth
 assets/css/tadawa.css       design tokens + components + animations (light-only identity)
 assets/js/site.js           language switch, nav, reveal/counter animations, tabs, forms
 assets/js/lang-init.js      picks the language before first paint (?lang=, saved choice, browser)

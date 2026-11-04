@@ -1,34 +1,109 @@
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Tadawa home"><img src="assets/img/logo-color.svg" alt="Tadawa تداوىٰ" width="90" height="44"></a>
+    <a class="brand" href="{{base}}index.html" aria-label="Tadawa home"><img src="{{base}}assets/img/logo-color.svg" alt="Tadawa تداوىٰ" width="82" height="40"></a>
     <nav class="nav-links" aria-label="Main">
-      <a href="patients.html"><span class="en">Patients</span><span class="ar">للمرضى</span></a>
-      <a href="business.html"><span class="en">Business</span><span class="ar">للشركات</span></a>
-      <a href="tafileh.html"><span class="en">Tafileh Center</span><span class="ar">مركز الطفيلة</span></a>
-      <a href="app.html"><span class="en">The app</span><span class="ar">التطبيق</span></a>
-      <a href="about.html"><span class="en">About</span><span class="ar">من نحن</span></a>
-      <a href="team.html"><span class="en">Team</span><span class="ar">فريق تداوىٰ</span></a>
-      <a href="contact.html"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a>
+      <div class="nav-item" data-nav="care">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Care</span><span class="ar">الرعاية</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega" role="region">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <div class="mega-head"><span class="en">Get care</span><span class="ar">احصل على الرعاية</span></div>
+              <a href="{{base}}care/treat-me-now.html"><span class="mi"><svg><use href="#i-phone"/></svg></span><span><b><span class="en">Treat Me Now</span><span class="ar">عالجني الآن</span></b><small><span class="en">A family doctor by video in minutes, 24/7</span><span class="ar">طبيب أسرة بالفيديو خلال دقائق، 24/7</span></small></span></a>
+              <a href="{{base}}care/remote-visit.html"><span class="mi"><svg><use href="#i-video"/></svg></span><span><b><span class="en">Remote visit</span><span class="ar">استشارة عن بعد</span></b><small><span class="en">Scheduled video appointments</span><span class="ar">مواعيد فيديو مجدولة</span></small></span></a>
+              <a href="{{base}}care/clinic-visit.html"><span class="mi"><svg><use href="#i-clinic"/></svg></span><span><b><span class="en">Clinic visit</span><span class="ar">زيارة العيادة</span></b><small><span class="en">Amman, Tafileh and Irbid</span><span class="ar">عمّان والطفيلة وإربد</span></small></span></a>
+              <a href="{{base}}care/home-visit.html"><span class="mi"><svg><use href="#i-home"/></svg></span><span><b><span class="en">Home visit</span><span class="ar">زيارة منزلية</span></b><small><span class="en">A doctor comes to you</span><span class="ar">يأتيك الطبيب إلى المنزل</span></small></span></a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-head"><span class="en">Ongoing care</span><span class="ar">رعاية مستمرة</span></div>
+              <a href="{{base}}care/family-medicine.html"><span class="mi"><svg><use href="#i-family"/></svg></span><span><b><span class="en">Family medicine</span><span class="ar">طب الأسرة</span></b><small><span class="en">One doctor for the whole household</span><span class="ar">طبيب واحد لكل البيت</span></small></span></a>
+              <a href="{{base}}care/chronic-care.html"><span class="mi"><svg><use href="#i-activity"/></svg></span><span><b><span class="en">Chronic conditions</span><span class="ar">الأمراض المزمنة</span></b><small><span class="en">Diabetes, hypertension, long-term follow-up</span><span class="ar">السكري والضغط والمتابعة طويلة الأمد</span></small></span></a>
+              <a href="{{base}}care/specialists.html"><span class="mi"><svg><use href="#i-stethoscope"/></svg></span><span><b><span class="en">Specialists</span><span class="ar">الاختصاصيون</span></b><small><span class="en">Eyes, heart, chest, neuro, surgery, rehab</span><span class="ar">عيون، قلب، صدرية، أعصاب، جراحة، تأهيل</span></small></span></a>
+              <a href="{{base}}care/health-record.html"><span class="mi"><svg><use href="#i-heartbeat"/></svg></span><span><b><span class="en">Care plan &amp; health record</span><span class="ar">خطة الرعاية والسجل الصحي</span></b><small><span class="en">Results, medicines, vitals, in the app</span><span class="ar">النتائج والأدوية والمؤشرات في التطبيق</span></small></span></a>
+            </div>
+            <div class="mega-col mega-col--aside">
+              <div class="mega-head"><span class="en">Paying for care</span><span class="ar">كلفة الرعاية</span></div>
+              <a href="{{base}}care/insurance.html"><span class="mi"><svg><use href="#i-shield"/></svg></span><span><b><span class="en">Insurance</span><span class="ar">التأمين</span></b><small><span class="en">10+ insurers and TPAs accepted</span><span class="ar">أكثر من 10 شركات تأمين معتمدة</span></small></span></a>
+              <a href="{{base}}care/plans.html"><span class="mi"><svg><use href="#i-wallet"/></svg></span><span><b><span class="en">Plans &amp; self-pay</span><span class="ar">الاشتراكات والدفع المباشر</span></b><small><span class="en">Families, individuals, employers</span><span class="ar">للعائلات والأفراد والشركات</span></small></span></a>
+              <a class="mega-cta" href="{{base}}resources/conditions.html"><span class="en">Not sure which care you need? Find the right care</span><span class="ar">لست متأكداً أي رعاية تحتاج؟ اعثر على الرعاية المناسبة</span><svg><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item" data-nav="organizations">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Organizations</span><span class="ar">المؤسسات</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-col">
+            <div class="mega-head"><span class="en">Partner with Tadawa</span><span class="ar">شراكة مع تداوىٰ</span></div>
+            <a href="{{base}}organizations/insurers.html"><span class="mi"><svg><use href="#i-shield"/></svg></span><span><b><span class="en">Insurers &amp; TPAs</span><span class="ar">شركات التأمين وإدارة النفقات</span></b><small><span class="en">Lower loss ratios with family-doctor triage</span><span class="ar">نسب خسارة أقل بفرز طبيب الأسرة</span></small></span></a>
+            <a href="{{base}}organizations/employers.html"><span class="mi"><svg><use href="#i-building"/></svg></span><span><b><span class="en">Employers</span><span class="ar">أصحاب العمل</span></b><small><span class="en">A doctor on call for staff and families</span><span class="ar">طبيب متاح للموظفين وعائلاتهم</span></small></span></a>
+            <a href="{{base}}organizations/providers.html"><span class="mi"><svg><use href="#i-stethoscope"/></svg></span><span><b><span class="en">Healthcare providers</span><span class="ar">مقدّمو الرعاية الصحية</span></b><small><span class="en">Join the network, run your clinic on Tadawa</span><span class="ar">انضم للشبكة وأدِر عيادتك على تداوىٰ</span></small></span></a>
+            <a href="{{base}}organizations/projects.html"><span class="mi"><svg><use href="#i-van"/></svg></span><span><b><span class="en">Large projects &amp; sites</span><span class="ar">المشاريع الكبرى والمواقع</span></b><small><span class="en">On-site clinics and the Care Van</span><span class="ar">عيادات ميدانية والعيادة المتنقلة</span></small></span></a>
+          </div>
+          <div class="mega-col mega-col--aside">
+            <div class="mega-head"><span class="en">Why it works</span><span class="ar">لماذا ينجح</span></div>
+            <a href="{{base}}organizations/evidence.html"><span class="mi"><svg><use href="#i-chart"/></svg></span><span><b><span class="en">Evidence &amp; outcomes</span><span class="ar">الأدلة والنتائج</span></b><small><span class="en">46% lower cost per form, measured</span><span class="ar">كلفة أقل بنسبة 46% لكل نموذج، بالقياس</span></small></span></a>
+            <a href="{{base}}organizations/index.html"><span class="mi"><svg><use href="#i-layers"/></svg></span><span><b><span class="en">The Tadawa model</span><span class="ar">نموذج تداوىٰ</span></b><small><span class="en">A primary-care ecosystem, not an app</span><span class="ar">منظومة رعاية أولية، لا مجرد تطبيق</span></small></span></a>
+            <a class="mega-cta" href="{{base}}company/contact.html#business"><span class="en">Request a proposal</span><span class="ar">اطلب عرضاً</span><svg><use href="#i-arrow"/></svg></a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item" data-nav="locations">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Locations</span><span class="ar">المواقع</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega mega--narrow"><div class="mega-inner">
+          <div class="mega-col">
+            <a href="{{base}}locations/amman.html"><span class="mi"><svg><use href="#i-pin"/></svg></span><span><b><span class="en">Amman</span><span class="ar">عمّان</span></b><small><span class="en">Family doctor clinic · Ibn Khaldoun St.</span><span class="ar">عيادة طب الأسرة · شارع ابن خلدون</span></small></span></a>
+            <a href="{{base}}locations/tafileh.html"><span class="mi"><svg><use href="#i-clinic"/></svg></span><span><b><span class="en">Tafileh</span><span class="ar">الطفيلة</span></b><small><span class="en">Tadawa Medical Center · 8:00 to 00:00 daily</span><span class="ar">مركز تداوىٰ الطبي · 8:00 إلى 00:00 يومياً</span></small></span></a>
+            <a href="{{base}}locations/irbid.html"><span class="mi"><svg><use href="#i-handshake"/></svg></span><span><b><span class="en">Irbid</span><span class="ar">إربد</span></b><small><span class="en">Partner clinic · Nabd Al-Amal</span><span class="ar">عيادة شريكة · نبض الأمل</span></small></span></a>
+            <a href="{{base}}locations/index.html"><span class="mi"><svg><use href="#i-globe"/></svg></span><span><b><span class="en">Everywhere in Jordan</span><span class="ar">في كل الأردن</span></b><small><span class="en">Telemedicine, plus what is coming next</span><span class="ar">طبابة عن بعد، وما هو قادم</span></small></span></a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item" data-nav="resources">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Resources</span><span class="ar">الموارد</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-col">
+            <div class="mega-head"><span class="en">Using Tadawa</span><span class="ar">استخدام تداوىٰ</span></div>
+            <a href="{{base}}resources/app-guide.html"><span class="mi"><svg><use href="#i-book"/></svg></span><span><b><span class="en">App guide</span><span class="ar">دليل التطبيق</span></b><small><span class="en">Every screen, step by step</span><span class="ar">كل شاشة، خطوة بخطوة</span></small></span></a>
+            <a href="{{base}}resources/videos.html"><span class="mi"><svg><use href="#i-video"/></svg></span><span><b><span class="en">Tutorial videos</span><span class="ar">فيديوهات تعليمية</span></b><small><span class="en">Eight short videos in Arabic</span><span class="ar">ثمانية فيديوهات قصيرة بالعربية</span></small></span></a>
+            <a href="{{base}}resources/help.html"><span class="mi"><svg><use href="#i-info"/></svg></span><span><b><span class="en">Help center</span><span class="ar">مركز المساعدة</span></b><small><span class="en">Searchable answers to common questions</span><span class="ar">إجابات قابلة للبحث عن الأسئلة الشائعة</span></small></span></a>
+          </div>
+          <div class="mega-col">
+            <div class="mega-head"><span class="en">Health</span><span class="ar">الصحة</span></div>
+            <a href="{{base}}resources/conditions.html"><span class="mi"><svg><use href="#i-sparkle"/></svg></span><span><b><span class="en">Find the right care</span><span class="ar">اعثر على الرعاية المناسبة</span></b><small><span class="en">Symptom to the right door, in seconds</span><span class="ar">من العَرَض إلى الباب الصحيح خلال ثوانٍ</span></small></span></a>
+            <a href="{{base}}resources/health-library.html"><span class="mi"><svg><use href="#i-file"/></svg></span><span><b><span class="en">Health library</span><span class="ar">المكتبة الصحية</span></b><small><span class="en">Short, doctor-reviewed guides</span><span class="ar">أدلة قصيرة راجعها الأطباء</span></small></span></a>
+          </div>
+          <div class="mega-col mega-col--aside mega-col--promo">
+            <div class="mega-promo"><img src="{{base}}assets/img/screens/my-health.png" alt="" width="120" loading="lazy"><div><b><span class="en">Your record, one tap away</span><span class="ar">سجلك بضغطة واحدة</span></b><small><span class="en">Results, medicines, vitals and vaccines in My Health.</span><span class="ar">النتائج والأدوية والمؤشرات والتطعيمات في «صحتي».</span></small><a href="{{base}}care/health-record.html"><span class="en">See how</span><span class="ar">اعرف كيف</span></a></div></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item" data-nav="company">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Company</span><span class="ar">الشركة</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega mega--narrow"><div class="mega-inner">
+          <div class="mega-col">
+            <a href="{{base}}company/about.html"><span class="mi"><svg><use href="#i-heartbeat"/></svg></span><span><b><span class="en">About Tadawa</span><span class="ar">عن تداوىٰ</span></b><small><span class="en">Story, vision, the primary-care thesis</span><span class="ar">القصة والرؤية وأطروحة الرعاية الأولية</span></small></span></a>
+            <a href="{{base}}company/team.html"><span class="mi"><svg><use href="#i-user"/></svg></span><span><b><span class="en">Team &amp; careers</span><span class="ar">الفريق والوظائف</span></b><small><span class="en">Open roles and the team hub</span><span class="ar">الوظائف المتاحة ومركز الفريق</span></small></span></a>
+            <a href="{{base}}company/investors.html"><span class="mi"><svg><use href="#i-trending"/></svg></span><span><b><span class="en">Investors</span><span class="ar">المستثمرون</span></b><small><span class="en">Traction, model, roadmap</span><span class="ar">الجذب والنموذج وخارطة الطريق</span></small></span></a>
+            <a href="{{base}}company/contact.html"><span class="mi"><svg><use href="#i-mail"/></svg></span><span><b><span class="en">Contact</span><span class="ar">تواصل معنا</span></b><small><span class="en">Phones, WhatsApp, addresses</span><span class="ar">الهواتف وواتساب والعناوين</span></small></span></a>
+          </div>
+        </div></div>
+      </div>
     </nav>
     <div class="nav-cta">
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="ar" aria-pressed="false" class="ar-label">عربي</button>
       </div>
-      <a class="btn btn--sm" href="app.html#download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span class="en">Get the app</span><span class="ar">حمّل التطبيق</span></a>
+      <a class="btn btn--sm nav-download" href="{{base}}resources/app-guide.html#download"><svg><use href="#i-download"/></svg><span class="en">Get the app</span><span class="ar">حمّل التطبيق</span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" data-aria-en="Open menu" data-aria-ar="افتح القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
-    <a href="index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-    <a href="patients.html"><span class="en">For patients</span><span class="ar">للمرضى</span></a>
-    <a href="business.html"><span class="en">For business</span><span class="ar">للشركات</span></a>
-    <a href="tafileh.html"><span class="en">Tafileh Medical Center</span><span class="ar">مركز تداوىٰ الطبي في الطفيلة</span></a>
-    <a href="app.html"><span class="en">The Tadawa app</span><span class="ar">تطبيق تداوىٰ</span></a>
-    <a href="about.html"><span class="en">About Tadawa</span><span class="ar">من نحن</span></a>
-    <a href="team.html"><span class="en">Team &amp; careers</span><span class="ar">فريق تداوىٰ والوظائف</span></a>
-    <a href="contact.html"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a>
-    <a class="btn btn--lg" href="app.html#download"><span class="en">Download the app</span><span class="ar">حمّل تطبيق تداوىٰ</span></a>
-  </nav>
-<main id="main">
+  <details><summary><span class="en">Care</span><span class="ar">الرعاية</span></summary><a href="{{base}}care/index.html"><span class="en">All care services</span><span class="ar">كل خدمات الرعاية</span></a><a href="{{base}}care/treat-me-now.html"><span class="en">Treat Me Now</span><span class="ar">عالجني الآن</span></a><a href="{{base}}care/remote-visit.html"><span class="en">Remote visit</span><span class="ar">استشارة عن بعد</span></a><a href="{{base}}care/clinic-visit.html"><span class="en">Clinic visit</span><span class="ar">زيارة العيادة</span></a><a href="{{base}}care/home-visit.html"><span class="en">Home visit</span><span class="ar">زيارة منزلية</span></a><a href="{{base}}care/family-medicine.html"><span class="en">Family medicine</span><span class="ar">طب الأسرة</span></a><a href="{{base}}care/chronic-care.html"><span class="en">Chronic conditions</span><span class="ar">الأمراض المزمنة</span></a><a href="{{base}}care/specialists.html"><span class="en">Specialists</span><span class="ar">الاختصاصيون</span></a><a href="{{base}}care/health-record.html"><span class="en">Care plan &amp; health record</span><span class="ar">خطة الرعاية والسجل الصحي</span></a><a href="{{base}}care/insurance.html"><span class="en">Insurance</span><span class="ar">التأمين</span></a><a href="{{base}}care/plans.html"><span class="en">Plans &amp; self-pay</span><span class="ar">الاشتراكات والدفع المباشر</span></a></details>
+  <details><summary><span class="en">Organizations</span><span class="ar">المؤسسات</span></summary><a href="{{base}}organizations/index.html"><span class="en">The Tadawa model</span><span class="ar">نموذج تداوىٰ</span></a><a href="{{base}}organizations/insurers.html"><span class="en">Insurers &amp; TPAs</span><span class="ar">شركات التأمين</span></a><a href="{{base}}organizations/employers.html"><span class="en">Employers</span><span class="ar">أصحاب العمل</span></a><a href="{{base}}organizations/providers.html"><span class="en">Healthcare providers</span><span class="ar">مقدّمو الرعاية</span></a><a href="{{base}}organizations/projects.html"><span class="en">Large projects</span><span class="ar">المشاريع الكبرى</span></a><a href="{{base}}organizations/evidence.html"><span class="en">Evidence &amp; outcomes</span><span class="ar">الأدلة والنتائج</span></a></details>
+  <details><summary><span class="en">Locations</span><span class="ar">المواقع</span></summary><a href="{{base}}locations/index.html"><span class="en">All locations</span><span class="ar">كل المواقع</span></a><a href="{{base}}locations/amman.html"><span class="en">Amman</span><span class="ar">عمّان</span></a><a href="{{base}}locations/tafileh.html"><span class="en">Tafileh</span><span class="ar">الطفيلة</span></a><a href="{{base}}locations/irbid.html"><span class="en">Irbid</span><span class="ar">إربد</span></a></details>
+  <details><summary><span class="en">Resources</span><span class="ar">الموارد</span></summary><a href="{{base}}resources/app-guide.html"><span class="en">App guide</span><span class="ar">دليل التطبيق</span></a><a href="{{base}}resources/videos.html"><span class="en">Tutorial videos</span><span class="ar">فيديوهات تعليمية</span></a><a href="{{base}}resources/help.html"><span class="en">Help center</span><span class="ar">مركز المساعدة</span></a><a href="{{base}}resources/conditions.html"><span class="en">Find the right care</span><span class="ar">اعثر على الرعاية المناسبة</span></a><a href="{{base}}resources/health-library.html"><span class="en">Health library</span><span class="ar">المكتبة الصحية</span></a></details>
+  <details><summary><span class="en">Company</span><span class="ar">الشركة</span></summary><a href="{{base}}company/about.html"><span class="en">About</span><span class="ar">عن تداوىٰ</span></a><a href="{{base}}company/team.html"><span class="en">Team &amp; careers</span><span class="ar">الفريق والوظائف</span></a><a href="{{base}}company/investors.html"><span class="en">Investors</span><span class="ar">المستثمرون</span></a><a href="{{base}}company/contact.html"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a></details>
+  <a class="btn btn--lg" href="{{base}}resources/app-guide.html#download"><span class="en">Download the app</span><span class="ar">حمّل تطبيق تداوىٰ</span></a>
+</nav>
