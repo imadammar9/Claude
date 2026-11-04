@@ -187,8 +187,8 @@ html[lang="ar"] .card-link:hover svg{transform:scaleX(-1) translateX(4px)}
 .stat .value{direction:ltr;unicode-bidi:isolate;font-size:clamp(36px,4.4vw,56px);font-weight:900;line-height:1;color:var(--tadawa-teal);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-family:var(--font-sans)}
 .stat .label{font-weight:600;font-size:15px}
 .stat .sub{font-size:13px;color:var(--text-secondary)}
-.section--brand .stat .value,.section--deep .stat .value,.card--brand .stat .value{color:#fff}
-.section--brand .stat .sub,.section--deep .stat .sub,.card--brand .stat .sub{color:var(--text-on-brand-muted)}
+.section--brand .stat .value,.section--deep .stat .value,.card--brand .stat .value,.card--deep .stat .value{color:#fff}
+.section--brand .stat .sub,.section--deep .stat .sub,.card--brand .stat .sub,.card--deep .stat .sub{color:var(--text-on-brand-muted)}
 
 /* ---------- Pulse line ---------- */
 .pulse{position:relative;overflow:hidden;color:var(--tadawa-teal);opacity:.14;height:120px;pointer-events:none}
