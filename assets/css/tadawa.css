@@ -1159,3 +1159,4 @@ img{height:auto}
 :focus-visible{outline:2px solid var(--tadawa-teal);outline-offset:2px;box-shadow:none;border-radius:var(--radius-sm)}
 .site-header :focus-visible,.dark :focus-visible,.page-hero :focus-visible,.site-footer :focus-visible,.section--ink :focus-visible,.section--deep :focus-visible,.section--brand :focus-visible,.section--story :focus-visible,.hero--v3 :focus-visible,.mobile-nav :focus-visible,.subnav :focus-visible{outline-color:var(--teal-bright)}
 .btn:focus-visible{outline-offset:3px;border-radius:var(--radius-pill)}
+.trust-strip .marquee{background:var(--ink-0)}
