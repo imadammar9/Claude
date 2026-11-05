@@ -34,7 +34,7 @@
 
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Tadawa home"><img src="assets/img/logo-color.svg" alt="Tadawa تداوىٰ" width="82" height="40"></a>
+    <a class="brand" href="index.html" aria-label="Tadawa home"><img src="assets/img/logo-white.svg" alt="Tadawa تداوىٰ" width="82" height="40"></a>
     <nav class="nav-links" aria-label="Main">
       <div class="nav-item" data-nav="care">
         <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true"><span class="en">Care</span><span class="ar">الرعاية</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -144,11 +144,13 @@
 
 <main id="main">
 <!-- ============ HERO ============ -->
-<section class="hero hero--v2">
+<section class="hero hero--v3">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="hero-copy">
       <span class="pill reveal"><span class="dot dot--live"></span><span class="en">Family doctors online now · every hour of the year</span><span class="ar">أطباء أسرة متصلون الآن · في كل ساعة من السنة</span></span>
-      <h1 class="display reveal" style="--d:80ms"><span class="en">See a family doctor <span class="grad-text">in minutes.</span></span><span class="ar">قابل طبيب أسرة <span class="grad-text">خلال دقائق</span></span></h1>
+      <h1 class="display reveal" style="--d:80ms"><span class="en">Healthcare that answers <span class="grad-text">in minutes.</span></span><span class="ar">رعاية صحية تجيبك <span class="grad-text">خلال دقائق</span></span></h1>
       <p class="lead reveal" style="--d:160ms"><span class="en">Tadawa gives every patient a family doctor as their first point of contact: by video any hour, in our clinics in Amman, Tafileh and Irbid, or at home. One doctor who knows you, one record, one care plan.</span><span class="ar">تمنح تداوىٰ كل مريض طبيب أسرة كنقطة اتصال أولى: بالفيديو في أي ساعة، أو في عياداتنا في عمّان والطفيلة وإربد، أو في المنزل. طبيب واحد يعرفك، وسجل واحد، وخطة رعاية واحدة.</span></p>
       <form class="booking reveal" data-booking style="--d:240ms" aria-label="Find care">
         <div class="bf"><label for="bk-need"><span class="en">I need</span><span class="ar">أحتاج إلى</span></label><select id="bk-need" name="need"><option value="urgent" data-en="A doctor right now" data-ar="طبيب الآن">A doctor right now</option><option value="remote" data-en="Video visit" data-ar="استشارة فيديو">Video visit</option><option value="clinic" data-en="Clinic visit" data-ar="زيارة عيادة">Clinic visit</option><option value="home" data-en="Home visit" data-ar="زيارة منزلية">Home visit</option><option value="specialist" data-en="A specialist" data-ar="اختصاصي">A specialist</option><option value="chronic" data-en="Chronic follow-up" data-ar="متابعة مزمنة">Chronic follow-up</option></select></div>
@@ -158,14 +160,17 @@
       </form>
       <p class="booking-note reveal" style="--d:300ms"><svg width="16" height="16"><use href="#i-shield"/></svg><span class="en">Accepted by MedNet, GIG, Medexa, NatHealth and 6 more. Cancel free up to 2 hours before a visit.</span><span class="ar">معتمد لدى ميدنت وGIG وميديكسا ونات هيلث و6 شركات أخرى. إلغاء مجاني حتى ساعتين قبل الموعد.</span></p>
     </div>
-    <div class="hero-stage">
-      <div class="glow" aria-hidden="true"></div>
+    <div class="stage" data-parallax>
+      <div class="ring" aria-hidden="true"></div>
       <div class="phone" data-tilt><div class="phone-screen"><img src="assets/img/app-home.jpg" alt="Tadawa app home screen: Treat Me, Clinic visit, Remote visit" width="640" height="1387" fetchpriority="high"></div></div>
-      <div class="float-card float-card--a"><img src="assets/img/screens/card-schedule.jpg" alt="Choose a date and time, confirmed instantly" width="600" height="470"></div>
-      <div class="float-card float-card--c"><img src="assets/img/doctor-portrait.jpg" alt=""><div><b class="en">Dr. joined your call</b><b class="ar">انضم الطبيب إلى مكالمتك</b><span class="en">Family medicine · 00:42</span><span class="ar">طب الأسرة · 00:42</span></div></div>
-      <div class="float-card float-card--b"><img src="assets/img/screens/card-vitals.jpg" alt="Eight vitals tracked in My Health" width="600" height="462"></div>
+      <div class="ui-card ui-card--call"><img class="av" src="assets/img/doctor-portrait.jpg" alt=""><div><span class="live"><i></i><span class="en">Live</span><span class="ar">مباشر</span></span><b class="en">Dr. Rana joined your call</b><b class="ar">انضمت د. رنا إلى مكالمتك</b><span class="en">Family medicine · 00:42</span><span class="ar">طب الأسرة · 00:42</span></div><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="ui-card ui-card--rx"><span class="ic"><svg><use href="#i-check"/></svg></span><div><b class="en">Prescription issued</b><b class="ar">صدرت الوصفة</b><span class="en">Verified · tied to consultation #4821</span><span class="ar">موثّقة · مرتبطة بالاستشارة #4821</span></div></div>
+      <div class="ui-card ui-card--vitals"><div class="row"><b class="en">Blood pressure</b><b class="ar">ضغط الدم</b><span class="val">118<i>/76</i></span></div><svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2FD4EC" stop-opacity=".35"/><stop offset="1" stop-color="#2FD4EC" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 26 L25 22 L50 24 L75 16 L100 18 L125 12 L150 14 L175 8 L200 10 L200 36 L0 36 Z"/><path d="M0 26 L25 22 L50 24 L75 16 L100 18 L125 12 L150 14 L175 8 L200 10"/></svg><small class="en">Trend · last 30 days · My Health</small><small class="ar">الاتجاه · آخر 30 يوماً · صحتي</small></div>
+      <div class="ui-card ui-card--wait"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><b class="en">Next doctor in ~2 min</b><b class="ar">الطبيب التالي خلال ~دقيقتين</b><span class="en">3 family doctors on shift</span><span class="ar">3 أطباء أسرة في المناوبة</span></div></div>
     </div>
   </div>
+  <div class="ecg-fade" aria-hidden="true"></div>
+  <svg class="ecg" viewBox="0 0 1400 120" preserveAspectRatio="none" aria-hidden="true"><path class="base" d="M0 70 L50 70 L67 62 L84 70 L112 70 L120 76 L132 12 L143 104 L151 70 L179 70 L202 54 L224 70 L280 70 L280 70 L330 70 L347 62 L364 70 L392 70 L400 76 L412 12 L423 104 L431 70 L459 70 L482 54 L504 70 L560 70 L560 70 L610 70 L627 62 L644 70 L672 70 L680 76 L692 12 L703 104 L711 70 L739 70 L762 54 L784 70 L840 70 L840 70 L890 70 L907 62 L924 70 L952 70 L960 76 L972 12 L983 104 L991 70 L1019 70 L1042 54 L1064 70 L1120 70 L1120 70 L1170 70 L1187 62 L1204 70 L1232 70 L1240 76 L1252 12 L1263 104 L1271 70 L1299 70 L1322 54 L1344 70 L1400 70"/><path class="trace" pathLength="1000" d="M0 70 L50 70 L67 62 L84 70 L112 70 L120 76 L132 12 L143 104 L151 70 L179 70 L202 54 L224 70 L280 70 L280 70 L330 70 L347 62 L364 70 L392 70 L400 76 L412 12 L423 104 L431 70 L459 70 L482 54 L504 70 L560 70 L560 70 L610 70 L627 62 L644 70 L672 70 L680 76 L692 12 L703 104 L711 70 L739 70 L762 54 L784 70 L840 70 L840 70 L890 70 L907 62 L924 70 L952 70 L960 76 L972 12 L983 104 L991 70 L1019 70 L1042 54 L1064 70 L1120 70 L1120 70 L1170 70 L1187 62 L1204 70 L1232 70 L1240 76 L1252 12 L1263 104 L1271 70 L1299 70 L1322 54 L1344 70 L1400 70"/></svg>
 </section>
 
 <!-- ============ TRUST STRIP ============ -->
@@ -219,7 +224,7 @@
 </section>
 
 <!-- ============ SCROLL STORY ============ -->
-<section class="section" id="how">
+<section class="section section--story" id="how">
   <div class="container">
     <div class="section-head reveal"><p class="eyebrow"><span class="en">How Tadawa works</span><span class="ar">كيف تعمل تداوىٰ</span></p><h2 class="h2"><span class="en">From symptom to treatment, without the waiting room.</span><span class="ar">من العَرَض إلى العلاج… بلا غرفة انتظار</span></h2></div>
     <div class="story" data-story>
@@ -256,7 +261,7 @@
       <a class="b-third" href="care/remote-visit.html"><span class="icon-tile"><svg><use href="#i-video"/></svg></span><h3><span class="en">Remote visit</span><span class="ar">استشارة عن بعد</span></h3><p><span class="en">Scheduled video appointments with the doctor you choose. Confirmed instantly.</span><span class="ar">مواعيد فيديو مجدولة مع الطبيب الذي تختاره. تأكيد فوري.</span></p></a>
       <a class="b-third" href="care/clinic-visit.html"><span class="icon-tile"><svg><use href="#i-clinic"/></svg></span><h3><span class="en">Clinic visit</span><span class="ar">زيارة العيادة</span></h3><p><span class="en">Amman, Tafileh and Irbid. Examination, labs, ECG and visiting specialists.</span><span class="ar">عمّان والطفيلة وإربد. فحص وتحاليل وتخطيط قلب واختصاصيون زائرون.</span></p></a>
       <a class="b-third" href="care/home-visit.html"><span class="icon-tile"><svg><use href="#i-home"/></svg></span><h3><span class="en">Home visit</span><span class="ar">زيارة منزلية</span></h3><p><span class="en">Because we care, we come to you. IV fluids, injections, wound care, ECG.</span><span class="ar">لأننا نهتم، نأتي إليك. محاليل وحقن وعناية بالجروح وتخطيط قلب.</span></p></a>
-      <a class="b-third b-subtle" href="care/family-medicine.html"><span class="icon-tile" style="background:#fff"><svg><use href="#i-family"/></svg></span><h3><span class="en">One account, the whole family</span><span class="ar">حساب واحد لكل العائلة</span></h3><p><span class="en">Add children and parents as profiles on your number. No new phone needed.</span><span class="ar">أضف الأبناء والوالدين كحسابات على رقمك. بلا هاتف جديد.</span></p><div class="shot shot--bleed"><img src="assets/img/social/p14-family.jpg" alt="" loading="lazy" style="object-fit:cover;object-position:0 100%;max-height:150px;width:100%"></div></a>
+      <a class="b-third b-subtle" href="care/family-medicine.html"><span class="icon-tile" style="background:#fff"><svg><use href="#i-family"/></svg></span><h3><span class="en">One account, the whole family</span><span class="ar">حساب واحد لكل العائلة</span></h3><p><span class="en">Add children and parents as profiles on your number. No new phone needed.</span><span class="ar">أضف الأبناء والوالدين كحسابات على رقمك. بلا هاتف جديد.</span></p><div class="shot shot--bleed"><img src="assets/img/family.jpg" alt="" loading="lazy" style="object-fit:cover;object-position:center 30%;max-height:170px;width:100%"></div></a>
       <a class="b-half" href="care/health-record.html"><span class="icon-tile"><svg><use href="#i-heartbeat"/></svg></span><h3><span class="en">Your health record, in your pocket</span><span class="ar">سجلك الصحي في جيبك</span></h3><p><span class="en">Reports, prescriptions, lab and radiology results, vaccines, allergies, medicines with reminders, and eight vitals you can trend over time.</span><span class="ar">التقارير والوصفات ونتائج المختبر والأشعة والتطعيمات والحساسيات والأدوية مع التذكير، وثماني علامات حيوية تتابع اتجاهها بمرور الوقت.</span></p><div class="shot"><img src="assets/img/screens/card-vitals.jpg" alt="" loading="lazy"></div></a>
       <a class="b-half b-ink" href="care/chronic-care.html" style="color:#fff"><span class="icon-tile icon-tile--on-brand"><svg><use href="#i-activity"/></svg></span><h3><span class="en">Chronic care that does not drop you</span><span class="ar">رعاية مزمنة لا تتخلى عنك</span></h3><p><span class="en">Diabetes, hypertension and long-term conditions followed by the same doctor, with a care plan you track in the app. Fewer emergency admissions, better days.</span><span class="ar">السكري والضغط والحالات طويلة الأمد يتابعها الطبيب نفسه، بخطة رعاية تتابعها في التطبيق. دخول أقل للطوارئ وأيام أفضل.</span></p><div class="shot"><img src="assets/img/screens/card-careplan.jpg" alt="" loading="lazy"></div></a>
     </div>

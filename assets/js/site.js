@@ -154,6 +154,17 @@
     wrap.addEventListener('pointerleave', function () { phone.style.transform = ''; phone.style.animation = ''; });
   }
 
+
+  /* ---------- Hero stage parallax (v3) ---------- */
+  document.querySelectorAll('[data-parallax]').forEach(function (st) {
+    if (reduce || !window.matchMedia('(pointer:fine)').matches) return;
+    st.addEventListener('pointermove', function (e) {
+      var r = st.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      st.style.setProperty('--mx', (-x).toFixed(3)); st.style.setProperty('--my', (-y).toFixed(3));
+    });
+    st.addEventListener('pointerleave', function () { st.style.setProperty('--mx', 0); st.style.setProperty('--my', 0); });
+  });
+
   /* ---------- Pulse draw: compute path lengths ---------- */
   document.querySelectorAll('.draw path').forEach(function (p) { try { p.style.setProperty('--len', Math.ceil(p.getTotalLength())); } catch (e) {} });
 
