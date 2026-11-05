@@ -165,6 +165,54 @@
     st.addEventListener('pointerleave', function () { st.style.setProperty('--mx', 0); st.style.setProperty('--my', 0); });
   });
 
+
+  /* ---------- Scrollable partner strip: auto-scroll, drag, swipe, keys ---------- */
+  document.querySelectorAll('[data-scroller]').forEach(function (sc) {
+    var track = sc.firstElementChild, paused = false, resumeT, dragging = false, sx = 0, sl = 0, pos = 0;
+    function half() { return track.scrollWidth / 2; }
+    function hold(ms) { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; pos = sc.scrollLeft; }, ms || 2500); }
+    function tick() {
+      if (!paused && !dragging && !reduce) { pos += 0.5; if (pos >= half()) pos -= half(); sc.scrollLeft = pos; }
+      else { pos = sc.scrollLeft; }
+      if (sc.scrollLeft >= half()) { sc.scrollLeft -= half(); pos = sc.scrollLeft; }
+      requestAnimationFrame(tick);
+    }
+    sc.addEventListener('mouseenter', function () { paused = true; clearTimeout(resumeT); });
+    sc.addEventListener('mouseleave', function () { if (!dragging) hold(600); });
+    sc.addEventListener('wheel', function () { hold(); }, { passive: true });
+    sc.addEventListener('touchstart', function () { hold(4000); }, { passive: true });
+    sc.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; dragging = true; sx = e.clientX; sl = sc.scrollLeft; sc.classList.add('is-dragging'); sc.setPointerCapture(e.pointerId); });
+    sc.addEventListener('pointermove', function (e) { if (!dragging) return; sc.scrollLeft = sl - (e.clientX - sx); });
+    function end() { if (!dragging) return; dragging = false; sc.classList.remove('is-dragging'); hold(); }
+    sc.addEventListener('pointerup', end); sc.addEventListener('pointercancel', end);
+    sc.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); hold(4000); sc.scrollBy({ left: e.key === 'ArrowRight' ? 200 : -200, behavior: reduce ? 'auto' : 'smooth' }); } });
+    requestAnimationFrame(tick);
+  });
+
+  /* ---------- In-page video player (no redirect) ---------- */
+  var vm;
+  function openVideo(id, ratio, title, local) {
+    if (!vm) {
+      vm = document.createElement('dialog'); vm.className = 'vmodal';
+      vm.innerHTML = '<div class="vbox"><button type="button" class="vclose" aria-label="Close video">×</button><div class="vslot" style="width:100%;height:100%"></div></div><span class="vtitle"></span>';
+      document.body.appendChild(vm);
+      vm.addEventListener('click', function (e) { if (e.target === vm || e.target.closest('.vclose')) vm.close(); });
+      vm.addEventListener('close', function () { vm.querySelector('.vslot').innerHTML = ''; });
+    }
+    var box = vm.querySelector('.vbox'); box.style.setProperty('--ratio', ratio || '9/16'); box.classList.toggle('wide', ratio === '16/9');
+    vm.querySelector('.vslot').innerHTML = local
+      ? '<video src="' + local + '" controls autoplay playsinline></video>'
+      : '<iframe src="https://drive.google.com/file/d/' + id + '/preview" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="' + (title || 'Video').replace(/"/g, '') + '"></iframe>';
+    vm.querySelector('.vtitle').textContent = title || '';
+    if (vm.showModal) vm.showModal(); else vm.setAttribute('open', '');
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-video]'); if (!a) return;
+    e.preventDefault();
+    var t = a.querySelector('.' + currentLang()) || a; var title = (t.textContent || '').trim().replace(/\s+/g, ' ');
+    openVideo(a.getAttribute('data-video'), a.getAttribute('data-ratio'), title, a.getAttribute('data-src'));
+  });
+
   /* ---------- Pulse draw: compute path lengths ---------- */
   document.querySelectorAll('.draw path').forEach(function (p) { try { p.style.setProperty('--len', Math.ceil(p.getTotalLength())); } catch (e) {} });
 

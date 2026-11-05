@@ -214,7 +214,7 @@ html[lang="ar"] .card-link:hover svg{transform:scaleX(-1) translateX(4px)}
 .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--border-default);background:#fff;cursor:pointer;place-items:center}
 .menu-btn svg{width:22px;height:22px}
 .mobile-nav{display:none}
-@media (max-width:1024px){
+@media (max-width:1100px){
   .nav-links{display:none}
   .nav-cta .btn{display:none}
   .menu-btn{display:grid;margin-inline-start:auto}
@@ -1159,3 +1159,45 @@ img{height:auto}
 :focus-visible{outline:2px solid var(--tadawa-teal);outline-offset:2px;box-shadow:none;border-radius:var(--radius-sm)}
 .site-header :focus-visible,.dark :focus-visible,.page-hero :focus-visible,.site-footer :focus-visible,.section--ink :focus-visible,.section--deep :focus-visible,.section--brand :focus-visible,.section--story :focus-visible,.hero--v3 :focus-visible,.mobile-nav :focus-visible,.subnav :focus-visible{outline-color:var(--teal-bright)}
 .btn:focus-visible{outline-offset:3px;border-radius:var(--radius-pill)}
+
+/* ===== comment fixes · Nov 2026 ===== */
+/* numbered list: keep text in the content column */
+.numbered > div > *{grid-column:2;min-width:0}
+.numbered > div::before{grid-column:1;grid-row:1 / span 2}
+@media (max-width:560px){.numbered > div > *,.numbered > div::before{grid-column:1;grid-row:auto}}
+/* Tadawa heartbeat */
+.hero--v3 .ecg--tadawa .bar{fill:none;stroke:rgba(255,255,255,.22);stroke-width:2.5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.hero--v3 .ecg--tadawa .base{stroke:rgba(255,255,255,.16);stroke-width:2;stroke-linejoin:round}
+.hero--v3 .ecg--tadawa .trace{stroke-dasharray:220 1000;stroke-dashoffset:1220;animation:trace 4.8s cubic-bezier(.45,.05,.55,.95) infinite}
+html[dir="rtl"] .hero--v3 .ecg--tadawa{transform:scaleX(-1)}
+/* scrollable partner strip */
+.trust-strip .marquee{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;direction:ltr;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.trust-strip .marquee::-webkit-scrollbar{display:none}
+.trust-strip .marquee.is-dragging{cursor:grabbing}
+.trust-strip .marquee-track{animation:none;padding-block:6px}
+.trust-strip .marquee-track img{-webkit-user-drag:none;user-select:none}
+.trust-strip .marquee:focus-visible{outline:2px solid var(--teal-bright);outline-offset:4px;border-radius:8px}
+/* sidebar navigation (tablet + phone) */
+@media (max-width:1100px){
+  .menu-btn{display:grid}
+  .mobile-nav{inset:var(--nav-h) 0 0 auto;width:min(420px,100%);border-inline-start:1px solid rgba(255,255,255,.1);box-shadow:-30px 0 80px rgba(0,0,0,.45)}
+  html[dir="rtl"] .mobile-nav{inset:var(--nav-h) auto 0 0;box-shadow:30px 0 80px rgba(0,0,0,.45)}
+  .mobile-nav.is-open{animation:slideIn .28s var(--ease)}
+  html[dir="rtl"] .mobile-nav.is-open{animation-name:slideInRtl}
+  body.menu-open::after{content:"";position:fixed;inset:var(--nav-h) 0 0 0;background:rgba(5,10,12,.55);backdrop-filter:blur(3px);z-index:48}
+}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:none}}
+@keyframes slideInRtl{from{transform:translateX(-100%)}to{transform:none}}
+/* in-page video player */
+.vmodal{position:fixed;top:0;left:0;right:0;bottom:0;border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;height:100dvh;margin:0;overflow:hidden}
+.vmodal:not([open]){display:none}
+.vmodal::backdrop{background:rgba(5,10,12,.82);backdrop-filter:blur(6px)}
+.vmodal .vbox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:min(86vh,860px);aspect-ratio:var(--ratio,9/16);max-width:92vw;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}
+.vmodal .vbox.wide{height:auto;width:min(92vw,1100px)}
+.vmodal iframe,.vmodal video{width:100%;height:100%;border:0;display:block;background:#000}
+.vmodal .vclose{position:absolute;top:16px;inset-inline-end:16px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(15,27,31,.85);color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:2}
+.vmodal .vclose:hover{background:#0E8098}
+.vmodal .vtitle{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;font-weight:600;font-size:14px;background:rgba(15,27,31,.85);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:999px;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+a[data-video]{cursor:pointer}
+a[data-video] .icon-tile svg,a[data-video] > svg{transition:transform var(--duration) var(--ease)}
+a[data-video]:hover .icon-tile svg{transform:scale(1.12)}
