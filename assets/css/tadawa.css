@@ -1026,8 +1026,8 @@ body[class*="nav-care"] [data-nav="care"] .nav-btn,body[class*="nav-organization
 .faq summary::after{background-color:var(--surface-subtle)}
 .trust-strip{background:var(--ink-0);border-color:rgba(255,255,255,.08)}
 .trust-strip .lbl{color:rgba(255,255,255,.5)}
-.trust-strip .marquee-track img{filter:grayscale(1) invert(1) contrast(1.15);mix-blend-mode:screen;opacity:.75;background:transparent}
-.trust-strip .marquee-track img:hover{filter:grayscale(1) invert(1) contrast(1.15);opacity:1}
+.trust-strip .marquee-track img{filter:none;opacity:.7;background:transparent;height:34px}
+.trust-strip .marquee-track img:hover{filter:none;opacity:1}
 .trust-strip .marquee{mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .logo-wall div{height:88px}
 
@@ -1159,4 +1159,3 @@ img{height:auto}
 :focus-visible{outline:2px solid var(--tadawa-teal);outline-offset:2px;box-shadow:none;border-radius:var(--radius-sm)}
 .site-header :focus-visible,.dark :focus-visible,.page-hero :focus-visible,.site-footer :focus-visible,.section--ink :focus-visible,.section--deep :focus-visible,.section--brand :focus-visible,.section--story :focus-visible,.hero--v3 :focus-visible,.mobile-nav :focus-visible,.subnav :focus-visible{outline-color:var(--teal-bright)}
 .btn:focus-visible{outline-offset:3px;border-radius:var(--radius-pill)}
-.trust-strip .marquee{background:var(--ink-0)}
