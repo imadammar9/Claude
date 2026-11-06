@@ -256,16 +256,25 @@
     });
   }
 
-  /* ---------- Scroll story ---------- */
+  /* ---------- Scroll story: brightest at the centre of the screen ---------- */
   document.querySelectorAll('[data-story]').forEach(function (story) {
-    var steps = story.querySelectorAll('.story-step'), shots = story.querySelectorAll('.story-phone .scr img');
-    function activate(i) { steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); }); shots.forEach(function (s, k) { s.classList.toggle('is-active', k === i); }); }
-    activate(0);
-    if (!('IntersectionObserver' in window)) return;
-    var so = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) activate(Array.prototype.indexOf.call(steps, en.target)); });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    steps.forEach(function (s) { so.observe(s); });
+    var steps = Array.prototype.slice.call(story.querySelectorAll('.story-step')), shots = story.querySelectorAll('.story-phone .scr img'), cur = -1, ticking = false;
+    function activate(i) { if (i === cur) return; cur = i; steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); }); shots.forEach(function (s, k) { s.classList.toggle('is-active', k === i); }); }
+    function update() {
+      ticking = false;
+      var mid = window.innerHeight / 2, range = window.innerHeight * 0.42, best = 0, bestD = Infinity;
+      steps.forEach(function (s, k) {
+        var t = s.querySelector('h3') || s, r = t.getBoundingClientRect(), c = r.top + r.height / 2, d = Math.abs(c - mid);
+        if (d < bestD) { bestD = d; best = k; }
+        var f = Math.max(0, 1 - d / range);
+        s.style.setProperty('--glow', (0.28 + 0.72 * f * f).toFixed(3));
+      });
+      activate(best);
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   });
 
   /* ---------- Sub-nav scrollspy ---------- */

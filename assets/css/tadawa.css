@@ -1219,3 +1219,11 @@ body{overflow-x:clip}
   .story-step h3{font-size:22px}
   .story-step p{font-size:15px}
 }
+
+/* story steps light up as they reach the centre of the screen */
+.story-step,.section--story .story-step{opacity:var(--glow,.35);transition:opacity .12s linear}
+.story-step.is-active,.section--story .story-step.is-active{opacity:var(--glow,1)}
+.section--story .story-step h3{transition:text-shadow .3s ease}
+.section--story .story-step.is-active h3{text-shadow:0 0 28px rgba(47,212,236,.35)}
+@media (max-width:900px){.story-step,.section--story .story-step{opacity:var(--glow,.42)}}
+@media (prefers-reduced-motion:reduce){.story-step{transition:none}}
