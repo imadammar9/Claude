@@ -1303,3 +1303,10 @@ html[lang="ar"] .help-search .hs-count{letter-spacing:0;text-transform:none}
 .faq details.is-flash summary{background:rgba(14,128,152,.08);border-radius:10px;transition:background .3s}
 .hero-split:has(> :only-child){grid-template-columns:minmax(0,1fr)}
 .hero-split:has(> :only-child) > .stack{max-width:760px}
+
+/* phone frame around app screenshots */
+.cta-phone .cta-device{width:min(272px,62vw);animation:float 7s ease-in-out infinite;background:#0B0F11;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 50px 120px rgba(0,0,0,.6),0 0 140px rgba(47,212,236,.16)}
+.cta-phone .cta-device img{width:100%;height:100%;border-radius:0;box-shadow:none;object-fit:cover;object-position:top}
+.hero-visual-phone img{background:#0B0F11;padding:7px;border-radius:38px;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 40px 100px rgba(0,0,0,.45)}
+.hero-visual-phone img + img{border-radius:30px;padding:6px}
+@media (prefers-reduced-motion:reduce){.cta-phone .cta-device{animation:none}}
