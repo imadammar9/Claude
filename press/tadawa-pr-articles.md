@@ -1,6 +1,6 @@
 # Tadawa · Five PR articles
 
-Draft press material for Tadawa Healthcare L.L.C. (Amman, Jordan). Figures are drawn from Tadawa's own data (March to June 2026), the MedNet pilot report and the 2026 introduction deck. Mark anything you want reviewed before release.
+Draft press material for Tadawa Healthcare L.L.C. (Amman, Jordan). Figures are drawn from Tadawa's own data, the MedNet pilot report and the 2026 introduction deck. Mark anything you want reviewed before release.
 
 Press contact: Imad Ammar, Business Development Manager · imad.ammar@tadawa.com · +962 79 311 3991 · www.tadawa.com
 
@@ -14,7 +14,7 @@ The new bilingual site (Arabic and English) guides every visitor to the right le
 
 "Most healthcare journeys in Jordan start at the wrong door," said Imad Ammar, Business Development Manager at Tadawa. "We built the site the way we built the service: a family doctor first, then everything else in its right place."
 
-For organizations, the site publishes Tadawa's evidence openly, including a two-month pilot with MedNet in which the average cost per medical form fell 46%, and a cost per visit of JD 18.59 against JD 31.80 at a public emergency department.
+For organizations, the site publishes Tadawa's evidence openly, including a pilot with MedNet in which the average cost per medical form fell 46%, and a cost per visit of JD 18.59 against JD 31.80 at a public emergency department.
 
 Tadawa was founded in Amman in 2022 and now employs more than 40 healthcare professionals, including more than 15 family medicine specialists who cover the app in shifts around the clock.
 
@@ -22,13 +22,13 @@ Tadawa was founded in Amman in 2022 and now employs more than 40 healthcare prof
 
 ## 2. MedNet pilot: family-doctor gatekeeping cuts cost per medical form by 46%
 
-**AMMAN, Jordan — November 2026.** A two-month evaluation with third-party administrator MedNet shows that routing insured members to a Tadawa family doctor first reduced the average cost per medical form from JD 65 to JD 35, a 46% reduction across the pilot account.
+**AMMAN, Jordan — November 2026.** An evaluation with third-party administrator MedNet shows that routing insured members to a Tadawa family doctor first reduced the average cost per medical form from JD 65 to JD 35, a 46% reduction across the pilot account.
 
-The result comes as health claims paid in Jordan rose 16.9% between January and May 2026 and the projected medical cost trend for the year reached 15%, up from 5% in 2025.
+The result comes as health claims paid in Jordan rose 16.9% year on year and the projected medical cost trend for the year reached 15%, up from 5% in 2025.
 
 Tadawa's model replaces self-referral with a clinically owned routing decision. Members see a family doctor by video within minutes; specialists, labs and imaging are ordered only when clinically needed, and every prescription and referral is logged against a documented consultation that the insurer can verify.
 
-Across Tadawa's own data from March to June 2026, 80% of visits billed only the consultation, 77% of members needed a single visit, and one in five visits received emergency-type treatment such as IV fluids, nebulizer or ECG at clinic prices.
+Across Tadawa's own data, 80% of visits billed only the consultation, 77% of members needed a single visit, and one in five visits received emergency-type treatment such as IV fluids, nebulizer or ECG at clinic prices.
 
 "Insurers do not need another app. They need a gatekeeper their members actually like using," said Imad Ammar. "The pilot shows both can be true at once."
 

@@ -1310,3 +1310,25 @@ html[lang="ar"] .help-search .hs-count{letter-spacing:0;text-transform:none}
 .hero-visual-phone img{background:#0B0F11;padding:7px;border-radius:38px;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 40px 100px rgba(0,0,0,.45)}
 .hero-visual-phone img + img{border-radius:30px;padding:6px}
 @media (prefers-reduced-motion:reduce){.cta-phone .cta-device{animation:none}}
+
+/* evidence: ER card */
+.er-card{border-radius:24px;padding:clamp(22px,3vw,32px);background:radial-gradient(120% 120% at 100% 0%,rgba(14,128,152,.5),rgba(14,128,152,0) 55%),var(--ink-0);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px rgba(10,19,22,.25)}
+.er-head{display:flex;gap:14px;align-items:center}
+.er-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(47,212,236,.14);color:var(--teal-bright);flex:none}
+.er-ic svg{width:22px;height:22px}
+.er-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal-bright)}
+html[lang="ar"] .er-kicker{letter-spacing:0;font-size:13px}
+.er-head h3{font-size:clamp(20px,2vw,24px);margin-top:2px;color:#fff}
+.er-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.er-tile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:16px 16px 14px;display:grid;gap:6px;align-content:start}
+.er-num{font-size:clamp(34px,3.4vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1;color:#fff;font-family:var(--font-sans)}
+.er-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;margin:6px 0 4px}
+.er-bar i{display:block;height:100%;width:var(--w);border-radius:3px;background:linear-gradient(90deg,#0E8098,#2FD4EC)}
+.er-tile b{font-size:14.5px;font-weight:600;line-height:1.35;color:#fff}
+.er-tile small{font-size:12.5px;color:rgba(255,255,255,.55)}
+.er-quote{margin:20px 0 0;padding:16px 18px;border-inline-start:3px solid var(--teal-bright);background:rgba(255,255,255,.04);border-radius:0 14px 14px 0}
+html[dir="rtl"] .er-quote{border-radius:14px 0 0 14px}
+.er-quote p{font-size:15.5px;line-height:1.55;color:rgba(255,255,255,.9);font-style:italic}
+html[lang="ar"] .er-quote p{font-style:normal}
+.er-quote cite{display:block;margin-top:10px;font-style:normal;font-size:12.5px;color:rgba(255,255,255,.55)}
+@media (max-width:480px){.er-grid{grid-template-columns:1fr}}
