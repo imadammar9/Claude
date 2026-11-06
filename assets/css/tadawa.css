@@ -1289,3 +1289,15 @@ html[lang="ar"] .site-footer h3{letter-spacing:0;font-size:13.5px}
   body[class*="nav-resources"] .mobile-nav .mn-group:nth-child(4) summary,
   body[class*="nav-company"] .mobile-nav .mn-group:nth-child(5) summary{color:var(--teal-bright)}
 }
+
+/* help search: live results */
+.help-search{position:relative}
+.help-search .hs-go{position:absolute;top:50%;inset-inline-end:8px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:linear-gradient(180deg,#179DB8,#0E8098);color:#fff;display:grid;place-items:center;cursor:pointer}
+.help-search .hs-go svg{position:static;transform:none;width:18px;height:18px;color:#fff}
+html[dir="rtl"] .help-search .hs-go svg{transform:scaleX(-1)}
+.help-search .hs-results{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;background:#fff;color:var(--tadawa-ink);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:8px;max-height:min(60vh,420px);overflow:auto}
+.help-search .hs-count{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary);padding:8px 12px 6px}
+html[lang="ar"] .help-search .hs-count{letter-spacing:0;text-transform:none}
+.help-search .hs-item{display:block;width:100%;text-align:start;border:0;background:transparent;padding:11px 12px;border-radius:12px;font:inherit;font-size:15px;font-weight:500;color:var(--tadawa-ink);cursor:pointer}
+.help-search .hs-item:hover,.help-search .hs-item:focus-visible{background:var(--teal-50);color:var(--text-brand)}
+.faq details.is-flash summary{background:rgba(14,128,152,.08);border-radius:10px;transition:background .3s}

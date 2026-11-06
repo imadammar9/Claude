@@ -294,19 +294,37 @@
     targets.forEach(function (t) { spy.observe(t); });
   }
 
-  /* ---------- Help center search ---------- */
+  /* ---------- Help center search: live results, Enter jumps to answers ---------- */
   var hs = document.querySelector('[data-help-search]');
   if (hs) {
     var faq = document.querySelector('.faq[data-searchable]');
-    var entries = faq.querySelectorAll('details'), cats = faq.querySelectorAll('.cat');
+    var entries = Array.prototype.slice.call(faq.querySelectorAll('details')), cats = faq.querySelectorAll('.cat');
+    var form = hs.closest('form'), box = form && form.querySelector('.hs-results');
+    function norm(x) { return (x || '').toLowerCase().replace(/[ً-ْٰ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه'); }
+    function text(d) { var l = currentLang(); var q = d.querySelector('summary .' + l), a = d.querySelector('.answer .' + l); return { q: (q || d.querySelector('summary')).textContent.trim(), all: norm(d.textContent) }; }
     function filter(q) {
-      q = q.trim().toLowerCase(); var shown = 0;
-      entries.forEach(function (d) { var hit = !q || d.textContent.toLowerCase().indexOf(q) > -1; d.classList.toggle('is-hidden', !hit); if (hit) shown++; if (q && hit) d.open = true; });
+      var words = norm(q).trim().split(/\s+/).filter(Boolean), hits = [];
+      entries.forEach(function (d) { var t = norm(d.textContent); var hit = words.every(function (w) { return t.indexOf(w) > -1; }); d.classList.toggle('is-hidden', !hit); if (hit) hits.push(d); if (words.length && hit) d.open = true; if (!words.length) d.open = false; });
       cats.forEach(function (c) { var n = c.nextElementSibling, any = false; while (n && !n.classList.contains('cat')) { if (n.tagName === 'DETAILS' && !n.classList.contains('is-hidden')) any = true; n = n.nextElementSibling; } c.classList.toggle('is-hidden', !any); });
-      faq.classList.toggle('is-empty', shown === 0);
+      faq.classList.toggle('is-empty', hits.length === 0);
+      return words.length ? hits : [];
     }
-    hs.addEventListener('input', function () { filter(hs.value); });
-    var q0 = new URL(location.href).searchParams.get('q'); if (q0) { hs.value = q0; filter(q0); }
+    function render(hits, q) {
+      if (!box) return;
+      if (!q.trim()) { box.hidden = true; box.innerHTML = ''; return; }
+      var ar = currentLang() === 'ar';
+      var head = '<div class="hs-count">' + (hits.length ? (ar ? hits.length + ' إجابة' : hits.length + (hits.length === 1 ? ' answer' : ' answers')) : (ar ? 'لا نتائج. جرّب كلمة أخرى أو اسألنا على واتساب.' : 'No results. Try another word, or ask us on WhatsApp.')) + '</div>';
+      box.innerHTML = head + hits.slice(0, 6).map(function (d, i) { return '<button type="button" class="hs-item" data-i="' + entries.indexOf(d) + '">' + text(d).q.replace(/</g, '&lt;') + '</button>'; }).join('');
+      box.hidden = false;
+    }
+    function go(d) { box && (box.hidden = true); d.open = true; d.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); d.classList.add('is-flash'); setTimeout(function () { d.classList.remove('is-flash'); }, 1600); }
+    hs.addEventListener('input', function () { render(filter(hs.value), hs.value); });
+    hs.addEventListener('focus', function () { if (hs.value.trim()) render(filter(hs.value), hs.value); });
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var hits = filter(hs.value); render(hits, hs.value); if (hits[0]) go(hits[0]); else faq.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }); });
+    if (box) box.addEventListener('click', function (e) { var b = e.target.closest('.hs-item'); if (b) go(entries[+b.getAttribute('data-i')]); });
+    document.addEventListener('click', function (e) { if (box && !e.target.closest('.help-search')) box.hidden = true; });
+    hs.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box) box.hidden = true; });
+    var q0 = new URL(location.href).searchParams.get('q'); if (q0) { hs.value = q0; var h0 = filter(q0); if (h0[0]) { var j0 = function () { setTimeout(function () { go(h0[0]); }, 180); }; if (document.readyState === 'complete') j0(); else window.addEventListener('load', j0); } }
   }
 
   /* ---------- Footer year ---------- */
