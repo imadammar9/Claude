@@ -1172,7 +1172,7 @@ img{height:auto}
 .hero--v3 .ecg--tadawa .bar{fill:none;stroke:rgba(255,255,255,.22);stroke-width:2.5;stroke-linecap:round;vector-effect:non-scaling-stroke}
 .hero--v3 .ecg--tadawa .base{stroke:rgba(255,255,255,.16);stroke-width:2;stroke-linejoin:round}
 .hero--v3 .ecg--tadawa .trace{stroke-dasharray:220 1000;stroke-dashoffset:1220;animation:trace 4.8s cubic-bezier(.45,.05,.55,.95) infinite}
-html[dir="rtl"] .hero--v3 .ecg--tadawa{transform:scaleX(-1)}
+html[dir="rtl"] .hero--v3 .ecg--tadawa{transform:none}
 /* scrollable partner strip */
 .trust-strip .marquee{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;direction:ltr;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .trust-strip .marquee::-webkit-scrollbar{display:none}
