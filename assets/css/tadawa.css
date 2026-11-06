@@ -1301,3 +1301,5 @@ html[lang="ar"] .help-search .hs-count{letter-spacing:0;text-transform:none}
 .help-search .hs-item{display:block;width:100%;text-align:start;border:0;background:transparent;padding:11px 12px;border-radius:12px;font:inherit;font-size:15px;font-weight:500;color:var(--tadawa-ink);cursor:pointer}
 .help-search .hs-item:hover,.help-search .hs-item:focus-visible{background:var(--teal-50);color:var(--text-brand)}
 .faq details.is-flash summary{background:rgba(14,128,152,.08);border-radius:10px;transition:background .3s}
+.hero-split:has(> :only-child){grid-template-columns:minmax(0,1fr)}
+.hero-split:has(> :only-child) > .stack{max-width:760px}
