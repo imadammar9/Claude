@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-one="section" data-many="sections">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0E8098">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="For Family Doctors working remotely or at Tadawa clinics, alongside the Tafileh team.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fff'/%3E%3Cpath d='M5 38H17L27 7L40 55L46 38H59' fill='none' stroke='%230a819d' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Family Doctor Workflow Handbook – Tadawa</title>
+  <style>
+    :root {
+      --ink: #202b31;
+      --teal: #0e8098;
+      --teal-dark: #07586b;
+      --teal-bright: #21aabc;
+      --muted: #64747c;
+      --line: #dce4e7;
+      --paper: #fff;
+      --canvas: #f4f7f8;
+      --radius: 18px;
+      --shadow: 0 14px 36px rgba(25, 53, 62, .07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.68;
+    }
+    a { color: var(--teal-dark); }
+    button, input { font: inherit; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 70px;
+      padding: 10px clamp(18px, 4vw, 54px);
+      border-bottom: 1px solid rgba(212, 224, 227, .9);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(15px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; text-decoration: none; }
+    .brand-logo { display: block; width: 142px; max-height: 60px; object-fit: contain; }
+    .hero-logo { display: block; width: min(235px, 58vw); max-height: 115px; margin: 0 0 24px; padding: 9px 13px; background: rgba(255,255,255,.96); border-radius: 13px; box-shadow: 0 12px 28px rgba(0,0,0,.13); object-fit: contain; }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: white;
+      background: linear-gradient(145deg, var(--teal), var(--teal-dark));
+      border-radius: 13px;
+      font-size: 23px;
+      font-weight: 900;
+    }
+    .brand-copy { display: grid; line-height: 1.15; }
+    .brand-copy strong { color: var(--teal-dark); font-size: 17px; letter-spacing: .02em; }
+    .brand-copy small { margin-top: 4px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .16em; }
+    .reading-progress { width: min(240px, 30vw); }
+    .progress-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 5px; color: var(--muted); font-size: 10px; font-weight: 800; }
+    .progress-meta strong { color: var(--teal-dark); font-variant-numeric: tabular-nums; }
+    .progress-track { height: 6px; overflow: hidden; border-radius: 99px; background: #e5edef; }
+    .progress-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-bright)); transition: width .2s ease; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(52px, 8vw, 96px) clamp(22px, 7vw, 96px) 48px;
+      color: white;
+      background:
+        radial-gradient(circle at 84% 18%, rgba(69, 204, 211, .28), transparent 27%),
+        linear-gradient(130deg, #064d5c, #0e8098 57%, #087184);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -125px;
+      bottom: -250px;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(255,255,255,.055), 0 0 0 70px rgba(255,255,255,.035);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1180px; margin: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: #c3f0f2; font-size: 11px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: #62d3d8; }
+    .hero h1 { max-width: 820px; margin: 0; font-size: clamp(37px, 6vw, 66px); line-height: 1.06; letter-spacing: -.045em; }
+    .hero-lede { max-width: 750px; margin: 18px 0 26px; color: rgba(255,255,255,.84); font-size: clamp(16px, 2vw, 19px); }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+    .hero-tag { padding: 7px 11px; color: white; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: 11px; font-weight: 700; }
+    .layout {
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      align-items: start;
+      gap: clamp(24px, 4vw, 58px);
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 44px clamp(18px, 4vw, 58px) 80px;
+    }
+    .sidebar { position: sticky; top: 88px; max-height: calc(100vh - 104px); overflow: auto; padding: 14px 4px 20px 0; }
+    .sidebar-heading { margin: 0 0 12px; color: var(--teal); font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .search-wrap { position: relative; margin-bottom: 9px; }
+    .search-wrap input {
+      width: 100%;
+      padding: 11px 37px 11px 12px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      outline: none;
+      font-size: 13px;
+    }
+    .search-wrap input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(14,128,152,.12); }
+    .search-icon { position: absolute; top: 10px; right: 12px; color: var(--muted); font-size: 16px; pointer-events: none; }
+    .search-count { min-height: 20px; margin: 0 2px 8px; color: var(--muted); font-size: 10px; }
+    .toc { display: grid; gap: 3px; }
+    .toc a {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      align-items: start;
+      gap: 8px;
+      padding: 8px 9px;
+      color: #617079;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 1.4;
+      transition: background .15s ease, color .15s ease;
+    }
+    .toc a span { color: var(--teal); font-size: 10px; font-variant-numeric: tabular-nums; font-weight: 900; }
+    .toc a:hover, .toc a[aria-current="location"] { color: var(--teal-dark); background: #e7f3f5; }
+    .toc a[aria-current="location"] { box-shadow: inset 3px 0 var(--teal); font-weight: 800; }
+    .toc a[hidden] { display: none !important; }
+    .search-empty { display: none; padding: 12px; color: var(--muted); background: white; border: 1px dashed var(--line); border-radius: 10px; font-size: 12px; }
+    .content { min-width: 0; }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin: 0 0 22px; padding-bottom: 21px; border-bottom: 1px solid var(--line); }
+    .intro h2 { margin: 0; font-size: 23px; letter-spacing: -.025em; }
+    .intro p { max-width: 650px; margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .quick-rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 30px; }
+    .quick-rule { min-width: 0; padding: 16px; background: white; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 6px 16px rgba(25,53,62,.035); }
+    .quick-rule strong { display: block; margin-bottom: 4px; color: var(--teal-dark); font-size: 12px; }
+    .quick-rule p { margin: 0; color: #53626a; font-size: 12px; line-height: 1.5; }
+    .credential-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin: 0 0 30px;
+      padding: 14px 16px;
+      color: #684b18;
+      background: #fff8e8;
+      border: 1px solid #f0dca6;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    .credential-note b { flex: 0 0 auto; color: #805500; }
+    .chapter {
+      --accent: #0e8098;
+      --wash: #edf9fa;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      margin: 0 0 24px;
+      padding: clamp(24px, 3.7vw, 42px);
+      background: linear-gradient(180deg, var(--wash), white 155px);
+      border: 1px solid #dce4e7;
+      border-inline-start: 5px solid var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      scroll-margin-top: 92px;
+    }
+    .chapter::before {
+      content: attr(data-number);
+      position: absolute;
+      z-index: -1;
+      inset-inline-end: 24px;
+      inset-block-start: 10px;
+      color: var(--accent);
+      opacity: .075;
+      font-size: clamp(62px, 9vw, 98px);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .chapter[data-group="teal"] { --accent: #0e8098; --wash: #edf9fa; }
+    .chapter[data-group="violet"] { --accent: #6955a4; --wash: #f5f2fc; }
+    .chapter[data-group="amber"] { --accent: #a7652e; --wash: #fff6ed; }
+    .chapter[data-group="green"] { --accent: #41835d; --wash: #f0f8f2; }
+    .chapter-kicker { margin: 0 0 5px; color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .chapter h2 { max-width: 860px; margin: 0 0 20px; font-size: clamp(25px, 3.6vw, 36px); line-height: 1.16; letter-spacing: -.035em; }
+    .chapter h3 { margin: 24px 0 9px; color: var(--accent); font-size: 17px; line-height: 1.3; }
+    .chapter h4 { margin: 18px 0 7px; font-size: 14px; }
+    .chapter p { max-width: 920px; margin: 8px 0; color: #445159; }
+    .chapter ul, .chapter ol { margin: 8px 0 16px; padding-inline-start: 24px; }
+    .chapter li { padding-inline-start: 3px; margin: 6px 0; color: #3d4a51; }
+    .chapter li::marker { color: var(--accent); font-weight: 800; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; padding: 0 !important; list-style: none; }
+    .tag-list li { margin: 0; padding: 7px 10px; color: #245560; background: white; border: 1px solid #cce4e8; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; margin: 12px 0 16px; }
+    .info-card { min-width: 0; padding: 14px 15px; background: white; border: 1px solid var(--line); border-radius: 11px; }
+    .info-card h3, .info-card h4 { margin: 0 0 5px; color: var(--accent); font-size: 13px; }
+    .info-card p { margin: 0; font-size: 13px; }
+    .callout {
+      margin: 14px 0;
+      padding: 13px 16px;
+      background: #f2f7f8;
+      border: 1px solid #d8e8eb;
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      color: #35464e;
+    }
+    .callout strong { color: var(--accent); }
+    .callout p { margin: 4px 0 0; font-size: 13px; }
+    .callout.warning { --accent: #a64040; background: #fff5f4; border-color: #f0d5d2; }
+    .callout.success { --accent: #32734d; background: #f1f8f3; border-color: #d5e9dc; }
+    .callout.open-point { --accent: #805500; background: #fff8d6; border-color: #ecd98a; }
+    .portal-meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 16px; }
+    .meta-chip { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; padding: 6px 9px; color: #506169; background: white; border: 1px solid var(--line); border-radius: 8px; font-size: 11px; overflow-wrap: anywhere; }
+    .meta-chip strong { color: var(--ink); }
+    .workflow {
+      overflow: hidden;
+      margin: 16px 0;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .workflow[open] { border-color: color-mix(in srgb, var(--accent) 42%, #dce4e7); box-shadow: 0 7px 18px rgba(24,67,75,.055); }
+    .workflow summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .workflow summary::-webkit-details-marker { display: none; }
+    .workflow summary::after { content: "+"; display: grid; flex: 0 0 25px; place-items: center; width: 25px; height: 25px; color: var(--accent); background: var(--wash); border-radius: 50%; font-size: 19px; font-weight: 500; line-height: 1; }
+    .workflow[open] summary::after { content: "−"; }
+    .workflow-content { padding: 0 17px 16px; border-top: 1px solid #edf0f2; }
+    .workflow-content ol { margin-top: 13px; }
+    .workflow-content > :last-child { margin-bottom: 0; }
+    .reference-list { display: grid; gap: 8px; margin: 10px 0 0; }
+    .reference-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 7px 18px; padding: 9px 11px; background: white; border: 1px solid var(--line); border-radius: 9px; font-size: 12px; }
+    .reference-row strong { color: var(--ink); }
+    .approval-number { display: inline-block; padding: 5px 9px; color: var(--teal-dark); background: #eaf5f6; border-radius: 7px; font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 900; letter-spacing: .03em; }
+    .source-status { margin-top: 16px !important; color: var(--muted) !important; font-size: 11px; }
+    .footer { padding: 30px 20px 38px; color: rgba(255,255,255,.75); background: #202b31; text-align: center; }
+    .footer-logo { display: block; width: 170px; max-height: 84px; margin: 0 auto 16px; object-fit: contain; filter: brightness(0) invert(1); }
+    @media print { .footer-logo { filter: none; } }
+    .footer strong { display: block; margin-bottom: 4px; color: white; font-size: 15px; }
+    .footer p { margin: 0; font-size: 11px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 960px) {
+      .layout { display: block; padding-top: 25px; }
+      .sidebar { position: static; max-height: none; padding: 0 0 22px; }
+      .toc { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 7px; }
+      .toc a { flex: 0 0 auto; max-width: 240px; background: white; border: 1px solid var(--line); }
+      .toc a[aria-current="location"] { box-shadow: inset 0 -3px var(--teal); }
+      .search-wrap { max-width: 430px; }
+      .search-count { min-height: 0; }
+    }
+    @media (max-width: 620px) {
+      .topbar { min-height: 62px; gap: 12px; padding-inline: 13px; }
+      .brand-logo { width: 112px; max-height: 48px; }
+      .hero-logo { width: min(210px, 62vw); margin-bottom: 18px; }
+      .brand-copy strong { font-size: 15px; }
+      .brand-copy small { font-size: 8px; }
+      .reading-progress { width: min(155px, 36vw); }
+      .progress-meta { font-size: 9px; }
+      .hero { padding: 48px 20px 38px; }
+      .layout { padding: 22px 14px 50px; }
+      .quick-rules, .info-grid { grid-template-columns: 1fr; }
+      .intro { display: block; }
+      .chapter { padding: 23px 18px; border-radius: 14px; }
+      .chapter h2 { font-size: 26px; }
+      .chapter p, .chapter li { font-size: 14px; }
+      .credential-note { display: block; }
+      .credential-note b { display: block; margin-bottom: 4px; }
+    }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .topbar, .sidebar, .quick-rules { display: none !important; }
+      .hero { padding: 25px; color: var(--ink); background: white; border-bottom: 4px solid var(--teal); }
+      .hero::after { display: none; }
+      .hero-lede, .hero-tag { color: var(--ink); }
+      .hero-tag { border-color: var(--line); }
+      .layout { display: block; padding: 20px; }
+      .chapter { break-inside: avoid; box-shadow: none; }
+      .workflow > .workflow-content { display: block !important; }
+      .workflow { break-inside: avoid; }
+      .footer { color: var(--ink); background: white; border-top: 1px solid var(--line); }
+      .footer strong { color: var(--teal-dark); }
+    }
+    .app-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 4px; }
+    .app-card { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 16px; background: white; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 6px 16px rgba(25,53,62,.035); }
+    .app-card h3 { margin: 0; color: var(--ink); font-size: 15px; }
+    .app-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .store-links { display: grid; gap: 8px; }
+    .store-btn { display: flex; align-items: center; gap: 10px; padding: 9px 12px; color: white; background: #111; border-radius: 10px; text-decoration: none; direction: ltr; transition: transform .15s ease, background .15s ease; }
+    .store-btn:hover { background: #2a2a2a; transform: translateY(-1px); }
+    .store-btn svg { flex: 0 0 22px; width: 22px; height: 22px; }
+    .store-btn span { display: grid; line-height: 1.15; text-align: left; }
+    .store-btn small { font-size: 9px; opacity: .8; }
+    .store-btn strong { font-size: 14px; }
+    .store-missing { padding: 9px 12px; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; font-size: 11px; text-align: center; }
+    @media (max-width: 860px) { .app-grid { grid-template-columns: 1fr; } }
+    @media print { .store-btn { color: var(--ink); background: white; border: 1px solid var(--line); } }
+    
+    .chapter[data-group="rose"] { --accent: #a64040; --wash: #fff4f3; }
+    .app-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .link-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 6px; padding: 0 !important; list-style: none; }
+    .link-chips li { margin: 0; padding: 0; }
+    .link-chips a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; color: #245560; background: white; border: 1px solid #cce4e8; border-radius: 999px; font-size: 12px; font-weight: 700; text-decoration: none; }
+    .link-chips a:hover { border-color: var(--accent); color: var(--accent); }
+    .link-chips a::after { content: "↗"; font-size: 11px; opacity: .7; }
+    a.approval-number { text-decoration: none; }
+    a.approval-number:hover { background: #d9eef1; }
+    .reference-row .row-note { flex-basis: 100%; color: var(--muted); font-size: 11px; }
+    .reference-row .nums { display: flex; flex-wrap: wrap; gap: 6px; }
+    .golden-rule { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 18px; padding: 0 !important; list-style: none; counter-reset: gr; }
+    .golden-rule li { counter-increment: gr; margin: 0; padding: 8px 12px; color: white; background: var(--accent); border-radius: 10px; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+    .golden-rule li::before { content: counter(gr) " · "; opacity: .7; }
+    .workflow-content ol > li::marker { font-variant-numeric: tabular-nums; }
+    .chapter .sub-label { margin: 18px 0 6px; color: var(--ink); font-size: 14px; font-weight: 800; }
+    .template-box { margin: 10px 0; padding: 12px 14px; background: #f7fafb; border: 1px dashed #c9d8dc; border-radius: 10px; font-size: 13px; color: #35464e; }
+    .search-icon { top: 12px !important; line-height: 0; }
+    @media (max-width: 620px) { .app-grid.two { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Tadawa handbook home">
+      <img class="brand-logo" alt="Tadawa تداوىٰ" src="data:image/webp;base64,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">
+    </a>
+    <div class="reading-progress" aria-label="Reading progress">
+      <div class="progress-meta"><span>Reading progress</span><strong id="progressPercent">0%</strong></div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Tadawa Healthcare · Family Medicine</p>
+      <h1>Family Doctor Workflow Handbook</h1>
+      <p class="hero-lede">For Family Doctors working remotely or at Tadawa clinics, alongside the Tafileh team.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">15 sections</span>
+        <span class="hero-tag">Revised 28 October 2026</span>
+        <span class="hero-tag">Version 1 · October 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Handbook contents">
+      <h2 class="sidebar-heading">Find a section</h2>
+      <label class="search-wrap">
+        <span class="sr-only">Search the handbook sections</span>
+        <input id="chapterSearch" type="search" placeholder="Search for a rule or task…" autocomplete="off">
+        <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></span>
+      </label>
+      <p class="search-count" id="searchCount" aria-live="polite">15 sections</p>
+      <nav class="toc" id="toc">
+        <a href="#role"><span>01</span>Your role</a>
+        <a href="#shifts"><span>02</span>Shifts and communication</a>
+        <a href="#routing"><span>03</span>Status and call routing</a>
+        <a href="#consultation"><span>04</span>Running a telemedicine consultation</a>
+        <a href="#troubleshooting"><span>05</span>Treat Me Now troubleshooting</a>
+        <a href="#appointments"><span>06</span>Appointments, care plans and orders</a>
+        <a href="#documentation"><span>07</span>Documentation rules on Tadawa</a>
+        <a href="#medications"><span>08</span>Medications, sick leaves and reports</a>
+        <a href="#insurance"><span>09</span>Insurance rules</a>
+        <a href="#referrals"><span>10</span>Gatekeeping and referrals</a>
+        <a href="#psychiatric"><span>11</span>Psychiatric emergencies and suicide risk</a>
+        <a href="#escalation"><span>12</span>Escalation</a>
+        <a href="#reporting"><span>13</span>Reporting</a>
+        <a href="#phones"><span>14</span>Phone numbers</a>
+        <a href="#references"><span>15</span>Reference documents</a>
+      </nav>
+      <p class="search-empty" id="searchEmpty">No section matches. Try a shorter word.</p>
+    </aside>
+
+    <div class="content" id="handbookContent">
+      <div class="intro">
+        <div>
+          <h2>Use the handbook by task</h2>
+          <p>Daily reference for Tadawa Family Doctors. Search shows the sections that contain your word and opens any folded steps that match.</p>
+        </div>
+      </div>
+
+      <div class="quick-rules" aria-label="Key reminders">
+        <article class="quick-rule">
+          <strong>Log out completely off shift</strong>
+          <p>"Away" or "Not available" is not enough. An open Tadawa tab, even on your phone, can route Treat Me Now calls to you.</p>
+        </article>
+        <article class="quick-rule">
+          <strong>Save every consultation</strong>
+          <p>If you do not click "Save consultation" you stay Busy and will not receive new calls.</p>
+        </article>
+        <article class="quick-rule">
+          <strong>ER referral: two different labels</strong>
+          <p>On MedNet select "general". On Tadawa select "ER / Emergency Medicine".</p>
+        </article>
+      </div>
+
+      <div class="credential-note" role="note">
+        <b>Restricted</b>
+        <span>Insurance portal logins and step-by-step portal entry are not in this handbook. They are in a separate restricted document: <a href="https://docs.google.com/document/d/1KGv76GOxYmgfNo-96zjzKN2I6B_k04fhl7U8lVrHW24/edit" target="_blank" rel="noopener noreferrer">Insurance Portals &amp; Credentials – Family Doctors Only</a>.</span>
+      </div>
+
+      <article class="chapter" id="role" data-number="01" data-group="teal">
+        <p class="chapter-kicker">01 · Foundation</p>
+        <h2>Your role</h2>
+<p>Tadawa has Family Medicine specialists only on the platform. You handle Treat Me Now calls, remote appointments, care plan requests and in-clinic consultations with the Tafileh team.</p>
+        <div class="callout">
+          <strong>You are the gatekeeper</strong>
+          <p>You decide whether a referral to a specialist or the ER is needed, and you make the referral on the insurer portal.</p>
+        </div>
+        <div class="info-grid">
+          <section class="info-card">
+            <h3>On-site General Practitioners</h3>
+            <p>Triage patients in Tafileh and act as your assistant doctors. They do not open insurance forms or order labs, imaging or medication.</p>
+          </section>
+          <section class="info-card">
+            <h3>Family Doctors only</h3>
+            <p>Open forms on insurer portals (including GP-type accounts), order tests and prescribe.</p>
+          </section>
+        </div>
+        <p>You also work with the nurses and secretaries in Tafileh. When we refer a patient to a specialty, the insurer opens access to all in-network specialists of that type and the patient chooses the doctor.</p>
+      </article>
+
+      <article class="chapter" id="shifts" data-number="02" data-group="teal">
+        <p class="chapter-kicker">02 · Team</p>
+        <h2>Shifts and communication</h2>
+<ul>
+          <li><strong>Check in:</strong> at the start of every shift, post a check-in in the <strong>#Tafileh Clinic 24/7</strong> group with the shift (A/B/C) and who is on with you (GP, nurse, Family Doctor).</li>
+          <li><strong>Swaps and absences:</strong> announce any swap, absence or change in hours in the <strong>#Tafileh Clinic 24/7</strong> group and tag the secretary so your hours on the system are updated. Appointments are booked according to the doctor shown on the schedule.</li>
+          <li><strong>Shift C (on-call):</strong> at the end of Shift B the clinic phone line is forwarded to the on-call Family Doctor, and staff post a confirmation in the <strong>#Tafileh Clinic 24/7</strong> group.</li>
+          <li>Doctors working from outside Jordan are contacted on Zoho Cliq, not by phone.</li>
+          <li>All-staff meetings are announced in <strong>#announcements</strong> and attendance is mandatory.</li>
+        </ul>
+        <div class="callout success">
+          <strong>Doctors' morning report</strong>
+          <p>Daily at about 8:45 AM on Zoho Meeting, inside Zoho Cliq. Secretaries do not attend.</p>
+        </div>
+        <h3>Zoho Cliq channels</h3>
+        <div class="reference-list">
+          <div class="reference-row"><strong>#announcements</strong><span>Official circulars – check regularly.</span></div>
+          <div class="reference-row"><strong>#Tafileh Clinic 24/7</strong><span>Daily operations.</span></div>
+          <div class="reference-row"><strong>#Medical discussions</strong><span>Clinical discussions – all doctors should join; secretaries and nurses do not join.</span></div>
+          <div class="reference-row"><strong>#IT-Support</strong><span>Tadawa platform problems.</span></div>
+          <div class="reference-row"><strong>#Chronic Reports</strong><span>You post the chronic medication report text; the secretary posts back the stamped, scanned report.</span></div>
+        </div>
+        <div class="callout warning">
+          <strong>Patient data</strong>
+          <p>Share patient data only in the authorised channels. Never post login screenshots or passwords in any group. Use private messages for one-to-one follow-ups.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="routing" data-number="03" data-group="violet">
+        <p class="chapter-kicker">03 · Calls</p>
+        <h2>Status and call routing</h2>
+<div class="callout warning">
+          <strong>Off shift means logged out</strong>
+          <p>When off shift, log out completely. "Away" or "Not available" is not enough. Opening Tadawa while off shift, even on your phone to check a patient file, can route Treat Me Now calls to you; log out immediately afterwards.</p>
+        </div>
+        <ul>
+          <li>The secretary may contact you on phone while you are off shift to follow up on a patient you saw.</li>
+          <li>Keep Tadawa open in only one browser tab.</li>
+          <li><strong>Patients cannot choose a doctor;</strong> the system routes the call to an available doctor. If a patient asks for a specific doctor, the other doctors set themselves to "Not available" until the call connects, then switch back to "Available".</li>
+          <li><strong>The status at the top of the screen is the one that counts.</strong> If it conflicts with your profile, or callers get "busy" while you are Available, switch to Unavailable and back to Available.</li>
+          <li>If the doctor who receives a call does not answer, the call is not passed on. The patient has to call again, and the next attempt goes to an available doctor.</li>
+          <li>If a call rings while you are marked Not available or Away, report it with a screenshot in <strong>#IT-Support</strong>.</li>
+        </ul>
+        <details class="workflow" open>
+          <summary>Callback Queue</summary>
+          <div class="workflow-content">
+            <ol>
+              <li>If all Family Doctors are busy, the patient is told no doctor is available.</li>
+              <li>All eligible Family Doctors and the clinic secretary get a missed-call notification, and a consultation with the status "Missed Call" appears in the appointments table and on the dashboard.</li>
+              <li>Click "Call Back Patient" to call the patient (it can take about a minute to open).</li>
+              <li>If the call-back does not connect, ask the clinic to call the patient by phone.</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout success">
+          <strong>Call priority</strong>
+          <p>Emergencies always come first. If you are busy and another patient's call is missed, the secretary calls that patient to say you will call back as soon as you finish.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="consultation" data-number="04" data-group="green">
+        <p class="chapter-kicker">04 · Clinical</p>
+        <h2>Running a telemedicine consultation</h2>
+<p>Summary of the <a href="https://docs.google.com/document/d/1vfk7wv086Ctd1u6TRq80M52nNTWU3hg4DwADnC7UqKc/edit" target="_blank" rel="noopener noreferrer">Tadawa Telemedicine Doctor Handbook</a>. Read the full handbook once; use this section as a quick reference.</p>
+        <p class="sub-label">The Tadawa Golden Rule</p>
+        <ol class="golden-rule">
+          <li>Ask</li><li>Observe</li><li>Assess</li><li>Decide</li><li>Explain</li><li>Safety-net</li><li>Document</li>
+        </ol>
+
+        <details class="workflow">
+          <summary>Before the call</summary>
+          <div class="workflow-content">
+            <ul>
+              <li>Review the record: previous consultations, diagnoses, medications, allergies and results.</li>
+              <li>Check your camera, microphone and internet.</li>
+              <li><strong>Professional presence:</strong> professional dress (working from home does not change this), a plain or office background, front lighting, camera at eye level, a quiet private room, no food, no personal calls and nobody else in view.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="workflow">
+          <summary>Opening</summary>
+          <div class="workflow-content">
+            <div class="template-box">"Hello, I'm Dr. ___, one of the family physicians at Tadawa. Can you hear and see me clearly?"</div>
+            <ul>
+              <li>Confirm full name, date of birth and identity. For children, confirm the guardian's name and relationship.</li>
+              <li>Ask where the patient is (essential if they may be unstable: exact location, who is with them, access to emergency services).</li>
+              <li>Confirm privacy and who else is present. Start with an open question: "How can I help you today?"</li>
+            </ul>
+          </div>
+        </details>
+        <details class="workflow">
+          <summary>History, vitals and examination</summary>
+          <div class="workflow-content">
+            <ul>
+              <li>Take a structured history: presenting complaint, relevant history, all medications and supplements, allergies (drug, reaction, severity).</li>
+              <li>Actively screen for red flags (chest pain, headache, abdominal pain, breathing). <strong>Red flags trigger a decision, not more questions.</strong></li>
+              <li>Ask for available measurements (temperature, BP, heart rate, SpO₂, glucose, weight) and when they were taken. Ask to see the device on camera if important.</li>
+              <li>Remote examination is limited. Do not use self-palpation to rule out an acute abdomen. Do not document a normal ear drum unless it was actually seen. Do not make a confident diagnosis from poor images.</li>
+              <li><strong>Children:</strong> confirm weight; observe alertness, feeding, breathing and hydration. Give guardians simple instructions; never ask them to "perform an examination".</li>
+            </ul>
+          </div>
+        </details>
+        <details class="workflow">
+          <summary>Decide</summary>
+          <div class="workflow-content">
+            <p><strong>Can I safely manage this patient remotely?</strong></p>
+            <div class="info-grid">
+              <section class="info-card"><h3>Yes</h3><p>Continue.</p></section>
+              <section class="info-card"><h3>Maybe / uncertain</h3><p>Arrange an in-person assessment.</p></section>
+              <section class="info-card"><h3>No / possible emergency</h3><p>Urgent or emergency referral.</p></section>
+            </div>
+            <p>Before prescribing, check diagnosis, allergies, current medications, interactions, contraindications, pregnancy, renal/hepatic issues, dose, frequency, duration and follow-up. Do not prescribe only because the patient asks.</p>
+          </div>
+        </details>
+        <details class="workflow">
+          <summary>Close</summary>
+          <div class="workflow-content">
+            <ul>
+              <li>Explain the likely diagnosis, the treatment, what to expect and what to do if there is no improvement.</li>
+              <li><strong>Safety-netting is mandatory</strong> and specific to the problem.</li>
+              <li>Never end with "follow up as needed" alone when follow-up matters: say when, where and who is responsible.</li>
+              <li>Confirm understanding (ask the patient to repeat how they will take the medication and which symptoms need urgent care).</li>
+            </ul>
+          </div>
+        </details>
+        <details class="workflow">
+          <summary>Document</summary>
+          <div class="workflow-content">
+            <ul>
+              <li>Date/time, modality, identity, participants, location if relevant, consent.</li>
+              <li>Complaint, history, medications, allergies, vitals, remote examination, assessment and plan (treatment, investigations, referral, follow-up, safety-netting).</li>
+              <li>Write <em>"Physical examination was limited by the telemedicine format"</em>, then document what you actually observed.</li>
+            </ul>
+          </div>
+        </details>
+
+        <h3>Emergency suspected</h3>
+        <div class="callout warning">
+          <strong>Stop the routine consultation</strong>
+          <p>"I am concerned about your symptoms and I don't think it is safe to manage this through telemedicine alone."</p>
+        </div>
+        <ol>
+          <li>Establish the patient's location and who is with them, and assess immediate safety.</li>
+          <li>Direct the patient to emergency care, make the referral (<a href="#referrals">Section 10</a>) and report in the <strong>#Tafileh Clinic 24/7</strong> group.</li>
+          <li>Document the recommendation, whether the patient accepted, and any contact with the receiving facility.</li>
+        </ol>
+        <div class="callout warning">
+          <strong>Never</strong>
+          <p>Pretend an examination was done; give false reassurance; continue video with an unstable patient; delay an emergency referral; prescribe antibiotics just because they are requested; end without a safety net.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="troubleshooting" data-number="05" data-group="violet">
+        <p class="chapter-kicker">05 · Calls</p>
+        <h2>Treat Me Now troubleshooting</h2>
+<div class="info-grid">
+          <section class="info-card">
+            <h3>Patient does not join</h3>
+            <p>Ask the secretary or nurse in the <strong>#Tafileh Clinic 24/7</strong> group to call the patient. The patient can rejoin the same call with the reconnect button. Wait up to 10 minutes. If the patient still has not joined, cancel the consultation so the patient is not charged.</p>
+          </section>
+          <section class="info-card">
+            <h3>Patient drops during the call</h3>
+            <p>Wait 5 minutes for the patient to call back, then save the consultation.</p>
+          </section>
+        </div>
+        <details class="workflow" open>
+          <summary>No sound</summary>
+          <div class="workflow-content">
+            <ul>
+              <li><strong>Patient side:</strong> update the Tadawa app, allow the microphone, turn off Bluetooth and use speakerphone.</li>
+              <li><strong>Your side:</strong> allow the microphone and camera in the browser, test at <a href="https://mictests.com/" target="_blank" rel="noopener noreferrer">mictests.com</a>, close other apps and Tadawa tabs, then refresh or restart.</li>
+              <li><strong>Still no sound:</strong> continue on Zoho Cliq, or by phone through the clinic, or let the secretary connect you with the patient.</li>
+            </ul>
+          </div>
+        </details>
+        <div class="callout open-point">
+          <strong>After every call</strong>
+          <p>Click "Save consultation". If you do not save, you stay "Busy" and will not receive new calls. If your status looks wrong or calls do not arrive: switch to Unavailable and back to Available, refresh, and keep Tadawa in one tab only.</p>
+        </div>
+        <div class="callout warning">
+          <strong>Tadawa is down</strong>
+          <p>See patients on Zoho Cliq and record the visits on Tadawa once it is back. Report it in #IT-Support with a screenshot.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="appointments" data-number="06" data-group="violet">
+        <p class="chapter-kicker">06 · Schedule</p>
+        <h2>Appointments, care plans and orders</h2>
+<ul>
+          <li>Today's appointments are on the dashboard; later ones are in the Appointments section. Search a patient's name in Appointments to see previous visits.</li>
+          <li><strong>Telemedicine appointments:</strong> click "Start consultation" at the appointment time. The patient cannot join early. The appointment stays open about 2 hours, but the system waits only about 15 minutes for the patient.</li>
+          <li><strong>Care plan requests:</strong> open the request. If the patient gave enough information, create the care plan. If not, the secretary books a remote appointment with you.</li>
+          <li>Appointments made by the Irbid clinic may appear on our dashboard; check with the Irbid group before cancelling.</li>
+        </ul>
+        <div class="callout">
+          <strong>Orders</strong>
+          <p>Always add lab and imaging orders in the orders section on Tadawa; otherwise the patient cannot see them. Patients can upload results in the app or send them to the clinic WhatsApp.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="documentation" data-number="07" data-group="green">
+        <p class="chapter-kicker">07 · Records</p>
+        <h2>Documentation rules on Tadawa</h2>
+<div class="info-grid">
+          <section class="info-card"><h3>Public notes</h3><p>Visible to the patient and all treating doctors.</p></section>
+          <section class="info-card"><h3>Private notes</h3><p>Seen only by the doctor who wrote them.</p></section>
+        </div>
+        <ul>
+          <li>The patient should call from their own (sub-account) profile so the claim and notes are recorded under the right person.</li>
+          <li><strong>A parent calls from their own account for a child:</strong> document the consultation under the child, remove diagnoses and medications from the parent's record, and keep the parent's note with a disclaimer that the call was for the child.</li>
+          <li><strong>Drug not in Tadawa's medication list:</strong> write it in the note and prescribe it on the insurer portal. Send missing drug names to the IT team in #IT-Support. Report wrong dosage forms (e.g., tablet listed as liquid) through the reporting form (<a href="#reporting">Section 13</a>).</li>
+        </ul>
+      </article>
+
+      <article class="chapter" id="medications" data-number="08" data-group="green">
+        <p class="chapter-kicker">08 · Prescribing</p>
+        <h2>Medications, sick leaves and reports</h2>
+<h3>Chronic medications</h3>
+        <p>A formal medical report is required for chronic medications, including dose changes or a new chronic medication. The patient submits it to the insurer for coverage approval.</p>
+        <ul>
+          <li><strong>Before writing it:</strong> confirm the patient is taking the medication, check the date of the last follow-up labs, and order labs if needed.</li>
+        </ul>
+        <p class="sub-label">Wording</p>
+        <div class="template-box">"Patient [name, age, date] was seen at our Tafileh centre and suffers from [condition]. He/she requires [drug, dose] as a chronic medication."<br>Sign with your name and "Family Medicine Specialist".</div>
+        <p>The template (<span lang="ar" dir="rtl">تقرير طبي للأدوية المزمنة</span>) is available from the secretariat.</p>
+        <details class="workflow" open>
+          <summary>From your text to the patient's PDF</summary>
+          <div class="workflow-content">
+            <ol>
+              <li>Send the report text to the secretary on Zoho Cliq in the <strong>#Chronic Reports</strong> channel.</li>
+              <li>The secretary puts it on the Tadawa Healthcare letterhead, prints, stamps and scans it.</li>
+              <li>The secretary sends the scanned copy to the patient through WhatsApp.</li>
+              <li>The secretary posts the same copy back in #Chronic Reports for documentation.</li>
+            </ol>
+          </div>
+        </details>
+
+        <h3>Unavailable medication and editing forms</h3>
+        <ul>
+          <li>The patient brings the name of an alternative available in Tafileh pharmacies. Remove the old drug and add the alternative on the form; the clinic informs the patient.</li>
+          <li>Any Family Doctor can edit a patient's form on the MedNet portal (dose, quantity, adding or replacing a drug). You do not need the doctor who wrote the original prescription.</li>
+          <li>Items already dispensed by the pharmacy cannot be edited.</li>
+        </ul>
+
+        <h3>Injections</h3>
+        <ul>
+          <li>Injections given from clinic stock must still be prescribed on the insurance form, so the patient dispenses them and returns them to the clinic.</li>
+          <li>Add an "IM injection" procedure; the administration fee covers syringes.</li>
+        </ul>
+
+        <h3>Sick leaves and reports</h3>
+        <ul>
+          <li>You decide sick leaves and document the duration in the patient's Public Note, then tell the Tafileh secretariat, who issue and stamp the official form and send it on WhatsApp. Only your name is required; you do not need your personal stamp, as the secretariat stamps the form with the Tadawa stamp.</li>
+          <li>If a GP writes a medical report for a patient you saw, the GP will ask for your approval.</li>
+          <li>Eye reports and glasses prescriptions are issued by Samara Centre, not Tadawa.</li>
+        </ul>
+      </article>
+
+      <article class="chapter" id="insurance" data-number="09" data-group="amber">
+        <p class="chapter-kicker">09 · Insurance</p>
+        <h2>Insurance rules</h2>
+<p class="sub-label">Accepted insurers and TPAs</p>
+        <ul class="tag-list">
+          <li>MedNet</li><li>Medexa</li><li>Newton</li><li>MedService – Company</li><li>MedService – Phosphate</li><li>Omni Care</li><li>Solidarity</li><li>GIG</li><li>Arab European</li><li>Bar Association</li>
+        </ul>
+        <p>MedService Company and MedService Phosphate are different insurers. Logins and portal steps: see the <a href="https://docs.google.com/document/d/1KGv76GOxYmgfNo-96zjzKN2I6B_k04fhl7U8lVrHW24/edit" target="_blank" rel="noopener noreferrer">restricted credentials document</a>.</p>
+
+        <h3>Pricing</h3>
+        <ul>
+          <li>Enter every procedure price manually from the Jordanian Medical Association fee schedule. <strong>A blank price causes rejection or partial approval.</strong></li>
+          <li>Price = points × point value (2.8 JOD minimum to 3.5 JOD maximum). Family Medicine and GP prices differ.</li>
+          <li>Dressings (MedNet): simple 3 JOD, large 8 JOD, maximum 5 per form.</li>
+          <li>If an in-clinic procedure is rejected, post the patient's name and insurance number in the <strong>#Tafileh Clinic 24/7</strong> group; the responsible person contacts the insurer.</li>
+        </ul>
+        <div class="callout">
+          <strong>Example</strong>
+          <p>Family Doctor ECG: 9.6 points = 26.88–33.6 JOD.</p>
+        </div>
+
+        <h3>When a form is used</h3>
+        <div class="info-grid">
+          <section class="info-card"><h3>No form used</h3><p>Consultations with no medication, lab/imaging request or opened claim. Referring right after the history, with no tests.</p></section>
+          <section class="info-card"><h3>Form used</h3><p>If tests are ordered, a form is used even if you refer later.</p></section>
+        </div>
+        <p>Referral forms never use one of the patient's forms; the receiving facility opens its own.</p>
+
+        <h3>Follow-ups and merging</h3>
+        <ul>
+          <li>If the patient returns within 7 days for the same complaint, edit the original form instead of opening a new one.</li>
+          <li>If several forms were opened by mistake, post in the <strong>#Tafileh Clinic 24/7</strong> group: patient name, national ID, insurance ID and "<span lang="ar" dir="rtl">دمج نماذج</span>". Merging happens on working days (Sunday–Thursday). Never merge a referral form with a form that has diagnoses or labs.</li>
+          <li>Before saying visits are finished, check for a visit in the last 7 days and add orders to that form. If all visits are used, the secretary asks the patient to contact their insurer; follow up once new forms are added.</li>
+        </ul>
+
+        <h3>Coverage notes</h3>
+        <ul>
+          <li>Corns and calluses are often treated as cosmetic; call approvals with the clinical justification.</li>
+          <li>Crepe and compression bandages are usually not covered or only partly.</li>
+          <li>Some plans do not cover 100%, which can lead to rejected tests.</li>
+        </ul>
+        <div class="callout open-point">
+          <strong>If labs are rejected</strong>
+          <p>Use symptoms as the diagnosis, add a justification with the "+" next to the diagnosis, or call approvals. Only Family Doctors open forms. Use the Family Doctor account for Family Medicine orders; a Family-specialist order opened on a GP-type account is rejected.</p>
+        </div>
+      </article>
+
+      <article class="chapter" id="referrals" data-number="10" data-group="amber">
+        <p class="chapter-kicker">10 · Referrals</p>
+        <h2>Gatekeeping and referrals</h2>
+<div class="callout">
+          <strong>Tamweelcom</strong>
+          <p>Tadawa is the exclusive, mandatory primary care provider for Tamweelcom employees (1,476 beneficiaries). All other providers are closed to them; they need a Tadawa referral.</p>
+        </div>
+        <ul>
+          <li><strong>Emergencies:</strong> Tamweelcom patients contact Tadawa first (app or phone). You make the ER referral on MedNet.</li>
+          <li><strong>Urgent referral requests from Tamweelcom HR</strong> (posted by management) are handled immediately by the Family Doctor on shift, even without a Treat Me Now call, and confirmed in the <strong>#Tafileh Clinic 24/7</strong> group.</li>
+        </ul>
+
+        <details class="workflow" open>
+          <summary>MedNet referral (Family Doctor)</summary>
+          <div class="workflow-content">
+            <ol>
+              <li>Open the patient's page on MedNet with the national ID or card number and date of birth.</li>
+              <li>On the left, choose "referring specialty".</li>
+              <li><strong>ER referrals:</strong> select "general". Do NOT select "Emergency Medicine" or "ER" (the ER will not see it).</li>
+              <li><strong>Specialty referrals:</strong> select the required specialty.</li>
+              <li><strong>Diagnosis on all referrals:</strong> <em>referral of pt w/o examination or treatment</em>, even if you made a diagnosis. This stops a form being deducted.</li>
+              <li>Leave "requested amount" blank and click Submit.</li>
+            </ol>
+            <ul>
+              <li>Do not call approvals for routine referrals. Ignore hospital staff who say it should be "ER".</li>
+              <li>If the hospital cannot find the referral, delete the form and create a new one with the same details; if it still fails, call MedNet approvals.</li>
+              <li>If MedNet auto-fills the form or "general" is missing (usually already referred that month), do not refer on that form. Send a screenshot to MedNet approvals and ask them to approve it (through the secretary).</li>
+              <li><strong>"Visited a specialty without a referral" message:</strong> check whether we referred the patient. If not, refer now; if yes, the secretary calls MedNet approvals and informs the patient.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="workflow" open>
+          <summary>Document the referral on Tadawa too</summary>
+          <div class="workflow-content">
+            <ol>
+              <li>For every Treat Me Now call or appointment where you refer, open "Referrals" on Tadawa.</li>
+              <li>Select the specialty. For ER referrals choose <strong>"ER / Emergency Medicine"</strong> (unlike MedNet).</li>
+              <li>Set the "date From – To" fields and click Save.</li>
+            </ol>
+            <p>Referrals for patients who call by phone are made directly on MedNet, then documented on Tadawa: create an appointment for the patient on Tadawa, then refer the patient on the platform.</p>
+          </div>
+        </details>
+
+        <h3>Referral reporting on Zoho Cliq</h3>
+        <p>Whenever a patient is referred, send a message in the <strong>#Tafileh Clinic 24/7</strong> group confirming that the referral has been made, with the patient's information and the referral destination.</p>
+        <ul class="tag-list">
+          <li>Patient name</li><li>Insurance number</li><li>Referral to (specialty / department)</li><li>Year of birth</li>
+        </ul>
+        <div class="info-grid">
+          <section class="info-card"><h3>Emergency referral</h3><p>The secretary follows up with the patient an hour after the referral.</p></section>
+          <section class="info-card"><h3>Specialist referral</h3><p>The secretary follows up the next day.</p></section>
+        </div>
+        <p>After the follow-up call, the secretary confirms in the same group that the patient was followed up.</p>
+
+        <h3>Radiology in Tafileh</h3>
+        <p>MedNet does not cover CT or MRI at government or military hospitals in Tafileh, and there are no other CT/MRI centres there. In emergencies the public hospital receives the patient, who signs a financial waiver. Otherwise refer to MedNet-approved imaging centres in Karak (ask in the <strong>#Tafileh Clinic 24/7</strong> group for the current list).</p>
+      </article>
+
+      <article class="chapter" id="psychiatric" data-number="11" data-group="rose">
+        <p class="chapter-kicker">11 · Safety</p>
+        <h2>Psychiatric emergencies and suicide risk</h2>
+<p>Follow the <a href="https://docs.google.com/document/d/1AvCENNEc172oMpsQ3PbRUv6emGKrrjTFv85Nit3CV2o/edit" target="_blank" rel="noopener noreferrer">internal protocol</a>. It applies to any patient with suicidal thoughts, intent or a recent attempt; acute psychosis endangering self or others; severe agitation or aggression; or any acute disturbance that stops them deciding safely.</p>
+        <div class="callout warning">
+          <strong>Immediate safety</strong>
+          <p>The patient is never left alone, is moved to a safe place, and harmful objects are removed (nursing does this in clinic).</p>
+        </div>
+        <p><strong>Assessment:</strong> vital signs, consciousness, rule out medical causes (hypoglycaemia, hypoxia, intoxication, head injury), mental state, and suicide risk (thoughts, plan, means, intent, previous attempts, risk and protective factors).</p>
+        <div class="reference-list">
+          <div class="reference-row"><strong>High risk</strong><span>Plan, means, recent attempt, command hallucinations, safety cannot be ensured → call an ambulance/Civil Defence or the security authorities and transfer immediately to the ER or a hospital with psychiatry.</span></div>
+          <div class="reference-row"><strong>Moderate risk</strong><span>Thoughts without a clear plan, several risk factors → consult a psychiatrist if possible; urgent referral to the ER or psychiatric clinic.</span></div>
+          <div class="reference-row"><strong>Low risk</strong><span>Passing thoughts, no plan or intent, strong protective factors → safety plan, early follow-up, psychiatry referral, and involve the family with consent (or without it if needed to protect life).</span></div>
+        </div>
+        <p><strong>Document:</strong> times, complaint, findings, risk assessment, mental state, decision and reasons, people contacted, ambulance call time, departure time, receiving facility, and any refusal with the patient's capacity and the steps you took.</p>
+      </article>
+
+      <article class="chapter" id="escalation" data-number="12" data-group="green">
+        <p class="chapter-kicker">12 · Follow-up</p>
+        <h2>Escalation</h2>
+<ul>
+          <li>After an emergency referral, the secretary calls the patient about an hour later and posts an update in the <strong>#Tafileh Clinic 24/7</strong> group.</li>
+          <li>When you need a patient followed up, ask the nurse or secretary in the <strong>#Tafileh Clinic 24/7</strong> group; they call and report back.</li>
+        </ul>
+      </article>
+
+      <article class="chapter" id="reporting" data-number="13" data-group="amber">
+        <p class="chapter-kicker">13 · Reporting</p>
+        <h2>Reporting</h2>
+<div class="callout open-point">
+          <strong>One form for all reporting</strong>
+          <p>All reporting goes through one form, the reporting form: <a href="https://docs.google.com/forms/d/e/1FAIpQLSebHeUZV1w2hwW8F9vvzqLqnmDQAPwpniKvQZVJ4YIpBUW7QQ/viewform" target="_blank" rel="noopener noreferrer"><span lang="ar" dir="rtl">نموذج الإبلاغ عن حادث أو مشكلة</span></a>. Use the form every time, even if you already mentioned the case in a Zoho Cliq group or by phone. A message in a group is not a report.</p>
+        </div>
+        <p class="sub-label">Report these through the form</p>
+        <ul>
+          <li>Any incident, bug or error, with a screenshot or video.</li>
+          <li>Problems with the Tadawa platform that patients or staff face, with the details and the action taken. Also post platform problems in #IT-Support.</li>
+          <li>Wrong dosage forms in Tadawa's medication list (e.g., a tablet listed as a liquid).</li>
+          <li><strong>Resistant patients:</strong> patients who refuse to comply with medical instructions or procedures.</li>
+          <li><strong>Abusive patients:</strong> patients who behave abusively or inappropriately.</li>
+          <li>Rare or unique medical services you provided.</li>
+        </ul>
+        <div class="callout">
+          <strong>Why it matters</strong>
+          <p>Every report lands in one place, so each case is followed up and nothing gets lost in chat messages. It gives Tadawa a documented record in line with approved procedures, which protects patients and staff. Repeated problems become visible, so they can be fixed.</p>
+        </div>
+        <p><a class="approval-number" href="https://docs.google.com/forms/d/e/1FAIpQLSebHeUZV1w2hwW8F9vvzqLqnmDQAPwpniKvQZVJ4YIpBUW7QQ/viewform" target="_blank" rel="noopener noreferrer">Open the reporting form ↗</a></p>
+      </article>
+
+      <article class="chapter" id="phones" data-number="14" data-group="teal">
+        <p class="chapter-kicker">14 · Contacts</p>
+        <h2>Phone numbers</h2>
+<h3>Tadawa</h3>
+        <div class="reference-list">
+          <div class="reference-row"><strong>Tadawa main (general)</strong><a class="approval-number" href="tel:0793226000">0793226000</a></div>
+          <div class="reference-row"><strong>Tafileh clinic</strong><a class="approval-number" href="tel:0793381119">0793381119</a></div>
+          <div class="reference-row"><strong>Amman clinic</strong><a class="approval-number" href="tel:0790730275">07 9073 0275</a></div>
+          <div class="reference-row"><strong>Irbid clinic</strong><a class="approval-number" href="tel:0790107082">0790107082</a></div>
+        </div>
+        <h3>Insurer approvals</h3>
+        <div class="reference-list">
+          <div class="reference-row"><strong>MedNet</strong><span class="nums"><a class="approval-number" href="tel:065008363">065008363</a><a class="approval-number" href="tel:+962798580355">+962 79 858 0355</a></span><span class="row-note">Second number: mobile</span></div>
+          <div class="reference-row"><strong>Medexa</strong><a class="approval-number" href="tel:065529833">065529833</a></div>
+          <div class="reference-row"><strong>Solidarity</strong><a class="approval-number" href="tel:065777555">065777555</a></div>
+          <div class="reference-row"><strong>MedService</strong><a class="approval-number" href="tel:064632965">064632965</a></div>
+          <div class="reference-row"><strong>Newton</strong><a class="approval-number" href="tel:065902320">065902320</a></div>
+          <div class="reference-row"><strong>GIG</strong><a class="approval-number" href="tel:065654665">065654665</a></div>
+          <div class="reference-row"><strong>Omni Care</strong><a class="approval-number" href="tel:065533757">065533757</a><span class="row-note">Ext. 103 / 105</span></div>
+          <div class="reference-row"><strong>Arab European</strong><span class="nums"><a class="approval-number" href="tel:065518935">065518935</a><a class="approval-number" href="tel:0778480867">0778480867</a><a class="approval-number" href="tel:0796666836">0796666836</a></span><span class="row-note">Main 065518935 · System problems 0778480867 · 24 h approvals 0796666836 · Referrals ext. 260 / 266</span></div>
+        </div>
+      </article>
+
+      <article class="chapter" id="references" data-number="15" data-group="teal">
+        <p class="chapter-kicker">15 · References</p>
+        <h2>Reference documents</h2>
+<ul class="link-chips">
+          <li><a href="https://docs.google.com/document/d/1vfk7wv086Ctd1u6TRq80M52nNTWU3hg4DwADnC7UqKc/edit" target="_blank" rel="noopener noreferrer">Tadawa Telemedicine Doctor Handbook</a></li>
+          <li><a href="https://docs.google.com/document/d/1KGv76GOxYmgfNo-96zjzKN2I6B_k04fhl7U8lVrHW24/edit" target="_blank" rel="noopener noreferrer">Insurance Portals &amp; Credentials – Family Doctors Only</a></li>
+          <li><a href="https://docs.google.com/document/d/1AvCENNEc172oMpsQ3PbRUv6emGKrrjTFv85Nit3CV2o/edit" target="_blank" rel="noopener noreferrer">Psychiatric Emergency &amp; Suicide Risk Protocol</a></li>
+          <li><a href="https://docs.google.com/document/d/182Yje5rH_zYRrVpDJcpBUn-VYYD5IjYlcpUrruc_CH4/edit" target="_blank" rel="noopener noreferrer">Tadawa platform updates</a></li>
+          <li><a href="https://drive.google.com/file/d/1kzsWn9OVC8c-79dxvlgJLvNxUqC9SGwF/view" target="_blank" rel="noopener noreferrer">Tadawa Healthcare telemedicine guide (PDF)</a></li>
+          <li><a href="https://docs.google.com/document/d/1LuGgfNem2GFxA-oflqvitS7CRD9oXFYunkHs97xaIsc/edit" target="_blank" rel="noopener noreferrer">Sick leave form template</a></li>
+          <li><a href="https://abdullahammartadawa.github.io/TadawaFAQs/" target="_blank" rel="noopener noreferrer">Tadawa FAQs website</a></li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <strong>Tadawa · Family Doctor Workflow Handbook</strong>
+    <p>Revised 28 October 2026. Check rules and contacts against current internal instructions.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const logo = document.querySelector(".brand-logo");
+      const hero = document.querySelector(".hero-inner");
+      if (!logo || !hero) return;
+      const heroLogo = logo.cloneNode();
+      heroLogo.className = "hero-logo";
+      heroLogo.alt = "Tadawa";
+      hero.prepend(heroLogo);
+      const footer = document.querySelector(".footer");
+      if (footer) {
+        const footerLogo = logo.cloneNode();
+        footerLogo.className = "footer-logo";
+        footerLogo.alt = "Tadawa";
+        footer.prepend(footerLogo);
+      }
+    })();
+
+    (() => {
+      const chapters = Array.from(document.querySelectorAll(".chapter"));
+      const links = Array.from(document.querySelectorAll(".toc a"));
+      const search = document.getElementById("chapterSearch");
+      const count = document.getElementById("searchCount");
+      const empty = document.getElementById("searchEmpty");
+      const one = document.documentElement.dataset.one;
+      const many = document.documentElement.dataset.many;
+      // Arabic-aware normalisation: drop diacritics/tatweel, unify alef and yaa forms.
+      const normalize = (value) => value.normalize("NFKC").toLowerCase()
+        .replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+        .replace(/[\u0622\u0623\u0625]/g, "\u0627")
+        .replace(/\u0649/g, "\u064A")
+        .replace(/\u0629/g, "\u0647")
+        .trim();
+
+      const filterChapters = () => {
+        const query = normalize(search.value);
+        let visible = 0;
+        chapters.forEach((chapter) => {
+          const matches = !query || normalize(chapter.textContent).includes(query);
+          chapter.hidden = !matches;
+          if (matches && query) chapter.querySelectorAll("details.workflow").forEach((d) => {
+            if (normalize(d.textContent).includes(query)) d.open = true;
+          });
+          const link = document.querySelector(`.toc a[href="#${chapter.id}"]`);
+          if (link) link.hidden = !matches;
+          if (matches) visible += 1;
+        });
+        count.textContent = `${visible} ${visible === 1 ? one : many}`;
+        empty.style.display = visible ? "none" : "block";
+      };
+      search.addEventListener("input", filterChapters);
+
+      const updateProgress = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = scrollable > 0 ? Math.min(100, Math.round((window.scrollY / scrollable) * 100)) : 0;
+        document.getElementById("progressBar").style.width = `${percent}%`;
+        document.getElementById("progressPercent").textContent = `${percent}%`;
+      };
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("resize", updateProgress);
+      updateProgress();
+
+      window.addEventListener("beforeprint", () => document.querySelectorAll("details.workflow").forEach((d) => d.open = true));
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            links.forEach((link) => link.removeAttribute("aria-current"));
+            const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+            if (active && !active.hidden) active.setAttribute("aria-current", "location");
+          });
+        }, { rootMargin: "-18% 0px -72% 0px" });
+        chapters.forEach((chapter) => observer.observe(chapter));
+      }
+    })();
+  </script>
+</body>
+</html>
