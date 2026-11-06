@@ -1048,7 +1048,10 @@ body[class*="nav-care"] [data-nav="care"] .nav-btn,body[class*="nav-organization
 .section--ink .btn--inverse,.section--deep .btn--inverse,.section--brand .btn--inverse{background:#fff;color:var(--ink-0)}
 .section--ink .btn--secondary,.section--deep .btn--secondary,.section--brand .btn--secondary{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.22)}
 .section--ink .form .field input,.section--ink .form .field select,.section--ink .form .field textarea{background:#fff;color:var(--text-primary)}
-.section--ink .card .form label,.section--ink .card .card-title,.section--ink .card h3{color:var(--text-primary)}
+.section--ink .card:has(form) .form label,.section--ink .card:has(form) .card-title,.section--ink .card:has(form) h3{color:var(--text-primary)}
+.section--ink .card:not(:has(form)) .card-title,.section--ink .card:not(:has(form)) b,.section--ink .card:not(:has(form)) h3{color:#fff}
+.section--ink .card:not(:has(form)) a:not(.btn){color:var(--teal-soft)}
+.section--ink .card:not(:has(form)) .card-text{color:rgba(255,255,255,.72)}
 .section--ink .card:has(form){background:#fff;color:var(--text-primary);backdrop-filter:none;border-color:var(--border-subtle)}
 .section--ink .card:has(form) .card-text{color:var(--text-secondary)}
 .section--ink .card:has(form) .form-note{color:var(--text-secondary)}
