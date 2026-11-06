@@ -49,6 +49,10 @@
     });
     mobileNav.addEventListener('click', function (e) { if (e.target.closest('a')) { mobileNav.classList.remove('is-open'); document.body.classList.remove('menu-open'); } });
   }
+
+  /* open the sidebar group for the current section */
+  (function () { var m = document.body.className.match(/nav-(care|organizations|locations|resources|company)/); if (!m) return; var i = ['care','organizations','locations','resources','company'].indexOf(m[1]); var g = document.querySelectorAll('.mobile-nav .mn-group')[i]; if (g) g.open = true; })();
+
   /* ---------- Mega menu ---------- */
   var items = document.querySelectorAll('.nav-item');
   function closeAll(except) { items.forEach(function (it) { if (it !== except) { it.classList.remove('is-open'); it.querySelector('.nav-btn').setAttribute('aria-expanded', 'false'); } }); }
