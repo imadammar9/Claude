@@ -1201,3 +1201,18 @@ html[dir="rtl"] .hero--v3 .ecg--tadawa{transform:scaleX(-1)}
 a[data-video]{cursor:pointer}
 a[data-video] .icon-tile svg,a[data-video] > svg{transition:transform var(--duration) var(--ease)}
 a[data-video]:hover .icon-tile svg{transform:scale(1.12)}
+/* story phone follows the scroll (sticky needs clip, not hidden) */
+body{overflow-x:clip}
+.section--story{overflow:clip}
+@media (max-width:900px){
+  .story{grid-template-columns:minmax(0,1fr) 132px;gap:18px}
+  .story-stage{position:sticky;top:calc(var(--nav-h) + 24px);height:auto;order:0;align-self:start}
+  .story-stage::before{width:220px;height:220px}
+  .story-phone{width:132px;border-radius:24px;padding:5px}
+  .story-phone::before{width:44px;height:12px;top:9px;border-radius:7px}
+  .story-phone .scr{inset:5px;border-radius:20px}
+  .story-step{min-height:52vh;opacity:.42;padding-block:24px}
+  .story-step.is-active{opacity:1}
+  .story-step h3{font-size:22px}
+  .story-step p{font-size:15px}
+}
